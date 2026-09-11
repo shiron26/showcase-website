@@ -580,6 +580,8 @@ Shiron supplied a hand-drawn "SB" monogram (a black S, a grey B) with the wordma
 
 Where it appears: the header pill, replacing the star-and-"SB" wordmark (monogram at 1.5rem); the footer (full logo at 4rem); and the favicons, `app/icon.png` (512) and `app/apple-icon.png` (180), the monogram on a white square as in the favicon Shiron drew, plus `public/favicon.ico` (32). In the hero, the monogram sits at the centre of the rotating badge (34% of its size, still while the ring turns), which is where a visitor's eye lands after the name. The four-point star stays the site's own mark everywhere else: marquee separator, missions bullet, the sign-off of the close, the texture of the fields.
 
+The entrance (added 2026-09-11): the light monogram sits top-left on the ink panel, its image box on the header mark's image box (same gutter, same pill inset), at clamp 2.5rem→3.75rem tall. It settles in over 720ms on `--ease` from 0.6rem below, then the counter runs; when the panel wipes up, the header's small mark is revealed exactly under where the big one stood. The panel is ink in both themes, so only the light file is rendered here — no theme pair.
+
 
 ## The mobile menu (added 2026-09-11)
 

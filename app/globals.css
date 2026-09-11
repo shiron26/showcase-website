@@ -459,6 +459,28 @@ body {
   transform-origin: left center;
   transition: transform 120ms linear;
 }
+/* Top-left corner on the header mark's image box (pill padding, 1px border,
+   and the half-leading the inline-flex pill adds), so when the panel wipes up
+   the small mark is revealed exactly under the big one's origin. It settles
+   in, then the counter does the rest. */
+.preloader-mark {
+  position: absolute;
+  top: calc(var(--s-4) + 0.5rem + 1px);
+  left: calc(var(--gutter) + 0.7rem + 1px);
+  height: clamp(2.5rem, 5vw, 3.75rem);
+  width: auto;
+  animation: preloader-mark-in 720ms var(--ease) 60ms both;
+}
+@keyframes preloader-mark-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* ── Header ─────────────────────────────────────────────────────────────── */
 

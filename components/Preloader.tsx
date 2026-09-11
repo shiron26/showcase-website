@@ -47,6 +47,10 @@ export default function Preloader({ lang }: { lang: Lang }) {
 
   return (
     <div className="preloader" aria-hidden="true">
+      {/* The monogram, where the header's will be once the panel has left: the
+          wipe hands one over to the other. The panel is ink in both themes, so
+          only the light variant is ever right here — no theme pair needed. */}
+      <img className="preloader-mark" src="/brand/sb-mark-light.png" alt="" width={245} height={200} />
       <p className="preloader-count num">
         {n}
         <sup>%</sup>
