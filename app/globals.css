@@ -805,10 +805,36 @@ body {
   gap: var(--s-6);
   align-items: end;
 }
+/* Narrow: the hero is the whole first screen. The name at the top, the
+   label, lead and actions anchored at the bottom against the marquee, and the
+   badge afloat in the free height between them, right-aligned — so the fold
+   is the marquee's top edge and nothing under it shows until the reader
+   scrolls. `svh` so the mobile address bar never pushes the actions off. */
 @media (max-width: 860px) {
+  .hero {
+    min-height: 100svh;
+    padding-block-end: var(--s-7);
+    display: flex;
+    flex-direction: column;
+  }
+  .hero > .inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
   .hero-under {
+    flex: 1;
     grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
     align-items: start;
+  }
+  .hero-under > div {
+    grid-row: 2;
+  }
+  .hero-under .badge {
+    grid-row: 1;
+    align-self: center;
+    justify-self: end;
   }
 }
 .hero-lead {
