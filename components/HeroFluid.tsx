@@ -194,7 +194,7 @@ export default function HeroFluid({ children }: { children: ReactNode }) {
     const wake = () => {
       if (running || !armed || dead || !visible || !onScreen) return;
       if (reduceMq.matches) return;
-      // The entrance panel covers the hero for its first 1150ms. Drawing under
+      // The entrance panel covers the hero for its first 1800ms. Drawing under
       // it is wasted work and an uncontrolled hand-off — but ARMING under it is
       // free and desirable, so the gate lives here rather than in the pointer
       // handler: the effect is ready the instant the panel lifts.

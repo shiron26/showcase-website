@@ -2229,7 +2229,7 @@ body {
   clip-path: inset(100% 0 0 0);
 }
 .xp-entry[data-in="1"] .xp-field {
-  animation: wipe-up 1100ms var(--ease-io) both;
+  animation: wipe-up 1450ms var(--ease-io) both;
 }
 .xp-entry[data-reveal="armed"] .xp-body,
 .xp-entry[data-reveal="armed"] .xp-aside-stack {
@@ -2237,10 +2237,10 @@ body {
   transform: translateY(0.85rem);
 }
 .xp-entry[data-in="1"] .xp-body {
-  animation: fade-up 900ms var(--ease) 180ms both;
+  animation: fade-up 1200ms var(--ease) 240ms both;
 }
 .xp-entry[data-in="1"] .xp-aside-stack {
-  animation: fade-up 900ms var(--ease) 360ms both;
+  animation: fade-up 1200ms var(--ease) 480ms both;
 }
 
 /* Narrow: one column, the field first and no longer pinned — pinning a block
@@ -2344,16 +2344,16 @@ body {
 }
 .hero-line {
   display: block;
-  animation: rise-in 1150ms var(--ease) both;
-  animation-delay: calc(var(--enter-delay) + var(--i, 0) * 120ms);
+  animation: rise-in 1500ms var(--ease) both;
+  animation-delay: calc(var(--enter-delay) + var(--i, 0) * 160ms);
 }
 .hero-in {
-  animation: fade-up 900ms var(--ease) both;
-  animation-delay: calc(var(--enter-delay) + 480ms + var(--i, 0) * 100ms);
+  animation: fade-up 1200ms var(--ease) both;
+  animation-delay: calc(var(--enter-delay) + 620ms + var(--i, 0) * 130ms);
 }
 .badge {
-  animation: badge-in 1300ms var(--ease) both;
-  animation-delay: calc(var(--enter-delay) + 560ms);
+  animation: badge-in 1700ms var(--ease) both;
+  animation-delay: calc(var(--enter-delay) + 720ms);
 }
 
 /* ── Statement ──────────────────────────────────────────────────────────── */
@@ -2372,8 +2372,8 @@ body {
   transform: translateY(135%);
 }
 .statement-band[data-in="1"] .st-w > span {
-  animation: rise-in 1000ms var(--ease) both;
-  animation-delay: calc(120ms + var(--i, 0) * 75ms);
+  animation: rise-in 1300ms var(--ease) both;
+  animation-delay: calc(160ms + var(--i, 0) * 100ms);
 }
 
 .statement-band[data-reveal="armed"] .st-in {
@@ -2381,8 +2381,8 @@ body {
   transform: translateY(0.85rem);
 }
 .statement-band[data-in="1"] .st-in {
-  animation: fade-up 900ms var(--ease) both;
-  animation-delay: calc(520ms + var(--i, 0) * 110ms);
+  animation: fade-up 1200ms var(--ease) both;
+  animation-delay: calc(680ms + var(--i, 0) * 140ms);
 }
 
 .statement-band[data-reveal="armed"] .portrait img {
@@ -2390,8 +2390,8 @@ body {
   transform: scale(1.12);
 }
 .statement-band[data-in="1"] .portrait img {
-  animation: wipe-up 1200ms var(--ease-io) both;
-  animation-delay: 80ms;
+  animation: wipe-up 1600ms var(--ease-io) both;
+  animation-delay: 100ms;
 }
 
 .statement-band[data-reveal="armed"] .statement-grid::before,
@@ -2399,10 +2399,10 @@ body {
   transform: scaleX(0);
 }
 .statement-band[data-in="1"] .statement-grid::before {
-  animation: draw 1200ms var(--ease-io) both;
+  animation: draw 1600ms var(--ease-io) both;
 }
 .statement-band[data-in="1"] .statement-grid::after {
-  animation: draw 1200ms var(--ease-io) 180ms both;
+  animation: draw 1600ms var(--ease-io) 240ms both;
 }
 
 @media (prefers-reduced-motion: reduce) {
