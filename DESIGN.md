@@ -414,7 +414,7 @@ The mechanism that replaces photography.
 
 ### Entrance Panel — signature component
 - Full-viewport ink panel, bone digits at clamp 4rem→15rem tabular display type with a 0.28em superscript `%`, name and role as labels along the bottom, and an acid 3px progress rule whose `scaleX` tracks the count.
-- **Plays once per session** (`sessionStorage.entered`), and only when the pre-paint boot script in `RootShell.tsx` set `data-enter="1"` on `<html>` — so it is present from the very first frame or never, and never drops onto an already-painted page.
+- **Plays on every arrival, refresh included** (changed 2026-09-11; it was once per session), and only when the pre-paint boot script in `RootShell.tsx` set `data-enter="1"` on `<html>` — so it is present from the very first frame or never, and never drops onto an already-painted page.
 - **Its exit is a CSS keyframe**, `enter-exit` 1150ms `--ease-io`, holding until 74% then wiping up to `translateY(-101%)`. JavaScript owns the digits and nothing else.
 - Never gates content: no scroll lock, no focus trap, the page is complete underneath it the whole time. Skipped entirely under reduced motion.
 
@@ -588,3 +588,7 @@ The entrance (added 2026-09-11): the light monogram sits top-left on the ink pan
 Below 900px the section row used to sit under the header pills with no ground, and wrote over the page as it scrolled. The user chose a full-screen menu from a board of five (a pill row, a bottom bar, a frosted band, a hiding header, the menu). The bar keeps one row: the mark, the controls, and a "Menu" pill. The menu is an ink veil (bone in dark, the `.band--ink` inversion) with the four sections in display type, the one under the reader at full colour and the others at 38%, the monogram top-left, a round close top-right, the e-mail at the bottom. It wipes down from the top and the links rise in after it; reduced motion shows it at once. While it is open the page behind is locked, focus moves to the close button and returns to the Menu pill on close, Escape closes, and a section link closes it as it jumps.
 
 This lifts the Nothing-Disappears Rule for navigation on narrow screens, by the user's decision. Content still never hides; only the section links wait behind one tap.
+
+## The cursor (added 2026-09-11)
+
+One disc of pure white (`#fff`, the one colour outside the palette: difference against white is the exact negative, against bone it would be tinted), 14px, `mix-blend-mode: difference`, so whatever it crosses is printed in negative under it: bone on ink, ink on bone, the field turned inside out. It trails the pointer on an exponential ease (time constant 80ms, `components/Cursor.tsx`) and swells to 40px over anything clickable (56px was tried first and read as too much), 10px while the button is down. The native cursor is hidden only once the component has mounted on a fine pointer; a touch screen, reduced motion, or a script that never ran keep the browser's own cursor, and the loop runs only while the disc is still catching up, then stops. The blend and the transform sit on the same element, because a transformed parent would isolate the disc from the page and it would invert nothing.

@@ -387,7 +387,7 @@ body {
    Components
    ══════════════════════════════════════════════════════════════════════════ */
 
-/* ── Entrance: a counter, once per session ──────────────────────────────── */
+/* ── Entrance: a counter, on every arrival ──────────────────────────────── */
 
 /* Present in the served HTML, shown only when the boot script armed it, so it
    is either there from the first frame or never — it never drops onto an
@@ -480,6 +480,53 @@ body {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ── Cursor: a disc that prints the page in negative ────────────────────── */
+/* Present only once Cursor.tsx has mounted on a fine pointer, which is also
+   the only time the native cursor is hidden: no script, a touch screen, or
+   reduced motion, and the browser's own cursor is untouched.
+   The blend sits on the element that is itself transformed, on purpose: a
+   transformed *parent* would form an isolated group and the disc would blend
+   with nothing. Position is the inline `translate` (set every frame); size
+   is the separate `scale` property, so it can ease on its own — and the two
+   compose translate-then-scale, which `transform` would not. */
+:root[data-cursor],
+:root[data-cursor] * {
+  cursor: none !important;
+}
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 400;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 999px;
+  /* Pure white, not bone: difference against white is the exact negative,
+     against bone it would be tinted. The one colour outside the palette. */
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  opacity: 0;
+  scale: 0.4;
+  transition:
+    scale 360ms var(--ease),
+    opacity var(--dur-fast) var(--ease);
+}
+.cursor--on {
+  opacity: 1;
+  scale: 1;
+}
+.cursor--on.cursor--hover {
+  scale: 2.85;
+}
+.cursor--on.cursor--down {
+  scale: 0.7;
+}
+.cursor--on.cursor--hover.cursor--down {
+  scale: 2.4;
 }
 
 /* ── Header ─────────────────────────────────────────────────────────────── */

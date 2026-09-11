@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import PlaceholderBanner from "@/components/PlaceholderBanner";
 import SmoothScroll from "@/components/SmoothScroll";
+import Cursor from "@/components/Cursor";
 import "@/app/globals.css";
 
 const CONTRACT = `<!--
@@ -19,8 +20,9 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 /* Runs before first paint: settles the theme, and decides whether the entrance
    plays at all — so the overlay is either there from the first frame or never,
-   and it never drops onto an already-painted page. */
-const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var s=localStorage.getItem("theme");var m=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=s==="light"||s==="dark"?s:(m?"dark":"light");d.setAttribute("data-theme",t);d.dataset.themeChoice=s||"system";}catch(e){}try{var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var seen=sessionStorage.getItem("entered")==="1";if(!reduce&&!seen){d.dataset.enter="1";d.style.setProperty("--enter-delay","980ms");}}catch(e){}})();`;
+   and it never drops onto an already-painted page. It plays on every arrival,
+   refresh included; only reduced motion skips it. */
+const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var s=localStorage.getItem("theme");var m=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=s==="light"||s==="dark"?s:(m?"dark":"light");d.setAttribute("data-theme",t);d.dataset.themeChoice=s||"system";}catch(e){}try{var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduce){d.dataset.enter="1";d.style.setProperty("--enter-delay","980ms");}}catch(e){}})();`;
 
 export default function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const t = dict(lang);
@@ -38,6 +40,7 @@ export default function RootShell({ lang, children }: { lang: Lang; children: Re
         <div hidden dangerouslySetInnerHTML={{ __html: CONTRACT }} />
         <Preloader lang={lang} />
         <SmoothScroll />
+        <Cursor />
         <a className="skip" href="#main">
           {t.skip}
         </a>

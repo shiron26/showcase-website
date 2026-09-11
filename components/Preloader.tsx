@@ -5,7 +5,7 @@ import type { Lang } from "@/lib/i18n";
 import { dict } from "@/lib/i18n";
 
 /**
- * The entrance: a counter to 100, once per session.
+ * The entrance: a counter to 100, on every arrival.
  *
  * Whether it plays at all is decided before first paint by the boot script in
  * RootShell, which sets `data-enter` on <html>; CSS keeps this markup hidden
@@ -24,11 +24,6 @@ export default function Preloader({ lang }: { lang: Lang }) {
 
   useEffect(() => {
     if (document.documentElement.dataset.enter !== "1") return;
-    try {
-      sessionStorage.setItem("entered", "1");
-    } catch {
-      /* private mode: it simply plays again next load */
-    }
     const start = Date.now();
     const DUR = 820;
     const id = window.setInterval(() => {
