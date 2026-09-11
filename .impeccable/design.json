@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-08T00:00:00Z",
+  "title": "Design System: Shiron Beskiwin — Showcase",
+  "extensions": {
+    "colorMeta": {
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "#f1efe8",
+        "note": "Light-theme page ground; in dark it becomes the foreground and the counterpart of .band--ink.",
+        "tonalRamp": ["oklch(15% 0.010 95)", "oklch(26% 0.010 95)", "oklch(37% 0.010 95)", "oklch(48% 0.010 95)", "oklch(59% 0.010 95)", "oklch(70% 0.010 95)", "oklch(84% 0.010 95)", "oklch(95% 0.010 95)"]
+      },
+      "bone-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Bone",
+        "canonical": "#e6e3d9",
+        "note": "The one tonal step in the system: .band--sunk in light. Not a card, a recessed band.",
+        "tonalRamp": ["oklch(15% 0.014 95)", "oklch(26% 0.014 95)", "oklch(37% 0.014 95)", "oklch(48% 0.014 95)", "oklch(59% 0.014 95)", "oklch(70% 0.014 95)", "oklch(84% 0.014 95)", "oklch(92% 0.014 95)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0c0c0d",
+        "note": "Dark-theme page ground, the entrance panel, and the light-theme .band--ink field.",
+        "tonalRamp": ["oklch(15% 0.003 285)", "oklch(26% 0.003 285)", "oklch(37% 0.003 285)", "oklch(48% 0.003 285)", "oklch(59% 0.003 285)", "oklch(70% 0.003 285)", "oklch(84% 0.003 285)", "oklch(95% 0.003 285)"]
+      },
+      "ink-sunk": {
+        "role": "neutral",
+        "displayName": "Sunk Ink",
+        "canonical": "#1a1a1c",
+        "note": ".band--sunk in dark.",
+        "tonalRamp": ["oklch(15% 0.004 285)", "oklch(26% 0.004 285)", "oklch(37% 0.004 285)", "oklch(48% 0.004 285)", "oklch(59% 0.004 285)", "oklch(70% 0.004 285)", "oklch(84% 0.004 285)", "oklch(95% 0.004 285)"]
+      },
+      "drench-blue": {
+        "role": "primary",
+        "displayName": "Electric Ultramarine",
+        "canonical": "#241fe6",
+        "note": "The drench. Background only: as text on the dark ground it measures 2.9:1. Text that wants blue uses --link instead.",
+        "tonalRamp": ["oklch(15% 0.29 266)", "oklch(26% 0.29 266)", "oklch(37% 0.29 266)", "oklch(45% 0.29 266)", "oklch(59% 0.29 266)", "oklch(70% 0.29 266)", "oklch(84% 0.29 266)", "oklch(95% 0.29 266)"]
+      },
+      "drench-blue-dark": {
+        "role": "primary",
+        "displayName": "Electric Ultramarine (dark theme)",
+        "canonical": "#3a34ff",
+        "note": "The same drench lifted for the ink ground; both --blue and --drench take this value under [data-theme=dark].",
+        "tonalRamp": ["oklch(15% 0.30 268)", "oklch(26% 0.30 268)", "oklch(37% 0.30 268)", "oklch(51% 0.30 268)", "oklch(59% 0.30 268)", "oklch(70% 0.30 268)", "oklch(84% 0.30 268)", "oklch(95% 0.30 268)"]
+      },
+      "acid": {
+        "role": "secondary",
+        "displayName": "Acid Green",
+        "canonical": "#d8ff4a",
+        "note": "Means live and nothing else in content (.dot on the current role, .row-live on open-ended projects). Elsewhere only as the counter-colour inside a drenched or ink field. 1.00:1 on bone — never text on a light ground.",
+        "tonalRamp": ["oklch(15% 0.22 118)", "oklch(26% 0.22 118)", "oklch(37% 0.22 118)", "oklch(48% 0.22 118)", "oklch(59% 0.22 118)", "oklch(70% 0.22 118)", "oklch(84% 0.22 118)", "oklch(95% 0.22 118)"]
+      },
+      "muted-light": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#4d4c48",
+        "note": "--fg-2 in light: running secondary prose, leads, summaries.",
+        "tonalRamp": ["oklch(15% 0.006 95)", "oklch(26% 0.006 95)", "oklch(37% 0.006 95)", "oklch(43% 0.006 95)", "oklch(59% 0.006 95)", "oklch(70% 0.006 95)", "oklch(84% 0.006 95)", "oklch(95% 0.006 95)"]
+      },
+      "faint-light": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "canonical": "#605e57",
+        "note": "--fg-3 in light: labels, index numbers, org names, scrollbar thumb.",
+        "tonalRamp": ["oklch(15% 0.007 95)", "oklch(26% 0.007 95)", "oklch(37% 0.007 95)", "oklch(50% 0.007 95)", "oklch(59% 0.007 95)", "oklch(70% 0.007 95)", "oklch(84% 0.007 95)", "oklch(95% 0.007 95)"]
+      },
+      "muted-dark": {
+        "role": "neutral",
+        "displayName": "Muted Bone",
+        "canonical": "#9d9a92",
+        "note": "--fg-2 in dark.",
+        "tonalRamp": ["oklch(15% 0.007 95)", "oklch(26% 0.007 95)", "oklch(37% 0.007 95)", "oklch(48% 0.007 95)", "oklch(59% 0.007 95)", "oklch(69% 0.007 95)", "oklch(84% 0.007 95)", "oklch(95% 0.007 95)"]
+      },
+      "faint-dark": {
+        "role": "neutral",
+        "displayName": "Faint Bone",
+        "canonical": "#8d8a83",
+        "note": "--fg-3 in dark.",
+        "tonalRamp": ["oklch(15% 0.007 95)", "oklch(26% 0.007 95)", "oklch(37% 0.007 95)", "oklch(48% 0.007 95)", "oklch(62% 0.007 95)", "oklch(70% 0.007 95)", "oklch(84% 0.007 95)", "oklch(95% 0.007 95)"]
+      },
+      "rule-light": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#cbc7ba",
+        "note": "Structural hairlines: between work rows, timeline entries, above the footer. Non-interactive, so no 3:1 requirement.",
+        "tonalRamp": ["oklch(15% 0.012 95)", "oklch(26% 0.012 95)", "oklch(37% 0.012 95)", "oklch(48% 0.012 95)", "oklch(59% 0.012 95)", "oklch(70% 0.012 95)", "oklch(83% 0.012 95)", "oklch(95% 0.012 95)"]
+      },
+      "rule-dark": {
+        "role": "neutral",
+        "displayName": "Rule (dark theme)",
+        "canonical": "#2c2c2e",
+        "tonalRamp": ["oklch(15% 0.004 285)", "oklch(27% 0.004 285)", "oklch(37% 0.004 285)", "oklch(48% 0.004 285)", "oklch(59% 0.004 285)", "oklch(70% 0.004 285)", "oklch(84% 0.004 285)", "oklch(95% 0.004 285)"]
+      },
+      "edge-light": {
+        "role": "neutral",
+        "displayName": "Edge",
+        "canonical": "#807b6d",
+        "note": "Borders on interactive, self-contained controls — buttons, chips, filters, header pills. Measured 3.67:1 against bone.",
+        "tonalRamp": ["oklch(15% 0.014 95)", "oklch(26% 0.014 95)", "oklch(37% 0.014 95)", "oklch(48% 0.014 95)", "oklch(59% 0.014 95)", "oklch(70% 0.014 95)", "oklch(84% 0.014 95)", "oklch(95% 0.014 95)"]
+      },
+      "edge-dark": {
+        "role": "neutral",
+        "displayName": "Edge (dark theme)",
+        "canonical": "#6a665f",
+        "note": "Measured 3.43:1 against ink.",
+        "tonalRamp": ["oklch(15% 0.010 95)", "oklch(26% 0.010 95)", "oklch(37% 0.010 95)", "oklch(48% 0.010 95)", "oklch(56% 0.010 95)", "oklch(70% 0.010 95)", "oklch(84% 0.010 95)", "oklch(95% 0.010 95)"]
+      },
+      "on-drench-dark": {
+        "role": "neutral",
+        "displayName": "On-Drench Bone",
+        "canonical": "#f4f2ec",
+        "note": "Text riding on the drenched field in dark; light uses plain bone. Row org/summary derive from it via color-mix at 78% / 85%.",
+        "tonalRamp": ["oklch(15% 0.008 95)", "oklch(26% 0.008 95)", "oklch(37% 0.008 95)", "oklch(48% 0.008 95)", "oklch(59% 0.008 95)", "oklch(70% 0.008 95)", "oklch(84% 0.008 95)", "oklch(96% 0.008 95)"]
+      }
+    },
+    "typographyMeta": {
+      "hero": { "displayName": "Hero", "purpose": "The name only, edge to edge and uppercase, plus its ghosted repeat at the contact close. Sizes itself from --hero-ch, computed in Home.tsx from the longest line of the name, so a longer name shrinks instead of being clipped." },
+      "display-1": { "displayName": "Display 1", "purpose": "The statement in the ink band, the contact headline, project page titles. The only level where the .em italic word appears." },
+      "display-2": { "displayName": "Display 2", "purpose": "Section headings: Work, Path, Skills." },
+      "display-3": { "displayName": "Display 3", "purpose": "Skills-group titles, project pagination targets, empty-state headline." },
+      "emphasis": { "displayName": "Emphasis", "purpose": "Bodoni Moda italic, exactly one word inside a Display 1 headline. Used twice on the whole site; that restraint is the rule." },
+      "lead": { "displayName": "Lead", "purpose": "The sentence directly under a display headline. 34ch by default, 38ch in the hero, 44ch on a project page." },
+      "body": { "displayName": "Body", "purpose": "Running prose in project blocks and timeline summaries, capped at --measure (62ch)." },
+      "small": { "displayName": "Small", "purpose": "Buttons, filters, nav labels, row summaries, footer. Weight 600." },
+      "label": { "displayName": "Label", "purpose": "Every metadata line — role and location under the name, block headings on project pages, dates, the entrance panel's bottom row. Uppercase, tracked 0.14em, in --fg-3." }
+    },
+    "fonts": [
+      { "family": "Bricolage", "role": "display", "file": "/fonts/bricolage.woff2", "weight": "200 800", "stretch": "75% 100%", "preloaded": true, "note": "Variable grotesque. Display type pins font-variation-settings: 'wdth' 100." },
+      { "family": "Hanken", "role": "body", "file": "/fonts/hanken.woff2", "weight": "300 800", "preloaded": true },
+      { "family": "Bodoni Moda", "role": "emphasis", "file": "/fonts/bodoni-italic.woff2", "weight": "400 700", "style": "italic", "preloaded": false, "note": "Not preloaded on purpose: a handful of glyphs, below the fold." }
+    ],
+    "shadows": [
+      { "name": "none", "value": "none", "purpose": "The system has no elevation vocabulary. Nothing is lifted, nothing floats. Depth is ground-against-ground, hairlines, and stacking order alone." },
+      { "name": "focus-halo", "value": "0 0 0 6px color-mix(in srgb, var(--bg) 85%, transparent)", "purpose": "Not elevation. A halo of the current background painted behind the focus outline so the ring stays visible when it lands on a drenched or ink field. On .band--drench and .band--ink it becomes color-mix(in srgb, var(--ink) 55%, transparent) with an acid outline." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default easing — heavy front-load, long settle. Colour changes, transforms, the text roll." },
+      { "name": "ease-io", "value": "cubic-bezier(0.76, 0, 0.24, 1)", "purpose": "Symmetrical in-out, for anything that wipes: the button fill, the row drench, the entrance exit." },
+      { "name": "dur", "value": "620ms", "purpose": "The long duration token." },
+      { "name": "dur-fast", "value": "240ms", "purpose": "Hover colour and border changes on pills and controls." },
+      { "name": "row-drench", "value": "transform 520ms var(--ease-io)", "purpose": "The work row's 100vw field scales from scaleY(0), origin top on entry and bottom on exit, so the drench reads as directional rather than as a fade." },
+      { "name": "wipe", "value": "transform 420ms var(--ease-io)", "purpose": "The button's ::before panel rising from translateY(101%)." },
+      { "name": "roll", "value": "transform 420ms var(--ease)", "purpose": "The header nav's stacked-label slide." },
+      { "name": "marquee-slide", "value": "translateX(-50%) over 38s linear infinite", "purpose": "Seamless because the item list is duplicated and the track rendered twice. Pauses on hover via animation-play-state." },
+      { "name": "badge-spin", "value": "rotate(360deg) over 24s linear infinite", "purpose": "The rotating circular badge." },
+      { "name": "enter-exit", "value": "1150ms var(--ease-io) forwards; holds to 74%, then translateY(-101%)", "purpose": "The entrance panel's exit. A CSS animation on purpose: requestAnimationFrame is throttled in background tabs and low-power modes, and an overlay whose only way out is a JS frame can sit over the page indefinitely. JavaScript owns the digits and nothing else." },
+      { "name": "theme-swap", "value": "background-color 120ms linear, color 120ms linear", "purpose": "The body's crossfade when the theme selector flips." },
+      { "name": "reduced-motion", "value": "animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important", "purpose": "Global off-switch, plus per-component branches: the entrance is skipped entirely (display: none, animation: none), the marquee track and badge ring stop, and smooth scrolling reverts to auto." }
+    ],
+    "breakpoints": [
+      { "name": "640", "value": "640px", "purpose": "Work row drops its index number; summary moves to column 1." },
+      { "name": "720", "value": "720px", "purpose": "Timeline entries and project prose blocks collapse to one column." },
+      { "name": "860", "value": "860px", "purpose": "Hero under-block and section heads collapse to one column, top-aligned." },
+      { "name": "900", "value": "900px", "purpose": "Header nav becomes its own scrollable row inside the fixed bar; project page main/aside collapses." },
+      { "name": "1000", "value": "1000px", "purpose": "Work row goes three-column; the summary moves under the title and clamps to two lines." }
+    ],
+    "layoutTokens": [
+      { "name": "--gutter", "value": "clamp(1.25rem, 0.5rem + 3.2vw, 3.5rem)", "purpose": "Inline padding on every .band." },
+      { "name": "--header-h", "value": "5.5rem fallback, then measured", "purpose": "Published by Header.tsx via ResizeObserver on the fixed header's offsetHeight. The hero and project pages reserve exactly this, because the notice bar's height changes with wrapping and language. Also drives scroll-padding-top." },
+      { "name": "--hero-ch", "value": "8 fallback, set inline per name", "purpose": "Computed in Home.tsx as Math.max(first.length, last.length, 5) and fed to --d-hero, so a longer name shrinks instead of overflowing." },
+      { "name": "--measure", "value": "62ch", "purpose": "Prose column cap." },
+      { "name": "inner-max", "value": "1400px", "purpose": ".band > .inner. Colour goes on the band so the field runs full-viewport while type stays measured." }
+    ],
+    "contrast": {
+      "floor": "4.5:1 for every text pair in both themes; lowest measured 4.64:1.",
+      "interactiveBorders": "--edge at 3.67:1 light and 3.43:1 dark.",
+      "knownFailuresDesignedAround": [
+        "--drench as text on the dark ground: 2.9:1 — which is why --link exists (blue on bone, acid on ink).",
+        "--acid on bone: 1.00:1 — which is why --focus is a separate role (ink on bone, acid on ink)."
+      ],
+      "obligation": "Changing --blue or --acid requires re-verifying every text pair in both themes."
+    }
+  },
+  "components": [
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The default action. A pill whose hover is a panel wiping up from below — never a lift, a scale or a shadow.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M8 2.5v7.5M4.75 7.25 8 10.5l3.25-3.25M2.75 13.25h10.5\"/></svg>Download the CV</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.15rem; border-radius: 999px; border: 1px solid var(--fg, #0c0c0d); background: transparent; color: var(--fg, #0c0c0d); font-family: var(--font-body, 'Hanken', ui-sans-serif, system-ui, sans-serif); font-size: 0.9375rem; font-weight: 600; text-decoration: none; position: relative; overflow: hidden; isolation: isolate; } .ds-btn::before { content: \"\"; position: absolute; inset: 0; background: var(--fg, #0c0c0d); transform: translateY(101%); transition: transform 420ms cubic-bezier(0.76, 0, 0.24, 1); z-index: -1; } .ds-btn:hover::before { transform: translateY(0); } .ds-btn:hover { color: var(--bg, #f1efe8); } .ds-btn:focus-visible { outline: 3px solid var(--focus, #0c0c0d); outline-offset: 2px; }"
+    },
+    {
+      "name": "Filled Button",
+      "kind": "button",
+      "refersTo": "button-fill",
+      "description": "The one primary action per page (email). Drenched at rest; its wipe panel is acid, so the hover flips ultramarine to acid rather than to a tint of itself.",
+      "html": "<a class=\"ds-btn-fill\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"1.75\" y=\"3.25\" width=\"12.5\" height=\"9.5\" rx=\"1.75\"/><path d=\"m2.5 5 4.6 3.4a1.5 1.5 0 0 0 1.8 0L13.5 5\"/></svg>Write to me</a>",
+      "css": ".ds-btn-fill { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.15rem; border-radius: 999px; border: 1px solid var(--drench, #241fe6); background: var(--drench, #241fe6); color: var(--on-drench, #f1efe8); font-family: var(--font-body, 'Hanken', ui-sans-serif, system-ui, sans-serif); font-size: 0.9375rem; font-weight: 600; text-decoration: none; position: relative; overflow: hidden; isolation: isolate; } .ds-btn-fill::before { content: \"\"; position: absolute; inset: 0; background: var(--acid, #d8ff4a); transform: translateY(101%); transition: transform 420ms cubic-bezier(0.76, 0, 0.24, 1); z-index: -1; } .ds-btn-fill:hover::before { transform: translateY(0); } .ds-btn-fill:hover { color: var(--ink, #0c0c0d); } .ds-btn-fill:focus-visible { outline: 3px solid var(--focus, #0c0c0d); outline-offset: 2px; }"
+    },
+    {
+      "name": "Filter Pill",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "The work index's kind filter. Selection state lives on aria-pressed and CSS reads that attribute directly — there is no parallel active class.",
+      "html": "<div class=\"ds-filters\" role=\"group\" aria-label=\"Selected work\"><button type=\"button\" class=\"ds-filter\" aria-pressed=\"true\">All<span class=\"ds-filter-n\">7</span></button><button type=\"button\" class=\"ds-filter\" aria-pressed=\"false\">Professional<span class=\"ds-filter-n\">4</span></button><button type=\"button\" class=\"ds-filter\" aria-pressed=\"false\">Personal<span class=\"ds-filter-n\">3</span></button></div>",
+      "css": ".ds-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; } .ds-filter { padding: 0.45rem 0.95rem; border-radius: 999px; border: 1px solid var(--edge, #807b6d); background: none; color: var(--fg-2, #4d4c48); font-family: var(--font-body, 'Hanken', ui-sans-serif, system-ui, sans-serif); font-size: 0.9375rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; transition: color 240ms cubic-bezier(0.16,1,0.3,1), border-color 240ms cubic-bezier(0.16,1,0.3,1), background-color 240ms cubic-bezier(0.16,1,0.3,1); } .ds-filter:hover { color: var(--fg, #0c0c0d); border-color: var(--fg, #0c0c0d); } .ds-filter[aria-pressed=\"true\"] { background: var(--fg, #0c0c0d); border-color: var(--fg, #0c0c0d); color: var(--bg, #f1efe8); } .ds-filter-n { font-size: 0.75rem; font-variant-numeric: tabular-nums; color: var(--fg-3, #605e57); } .ds-filter[aria-pressed=\"true\"] .ds-filter-n { color: color-mix(in srgb, var(--bg, #f1efe8) 70%, var(--fg, #0c0c0d)); } .ds-filter:focus-visible { outline: 3px solid var(--focus, #0c0c0d); outline-offset: 2px; }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "A non-interactive label pill. Inside a drenched or ink band its border switches to a mix of currentColor so it reads against a coloured ground.",
+      "html": "<div class=\"ds-chiplist\"><span class=\"ds-chip\">TypeScript</span><span class=\"ds-chip\">Postgres</span><span class=\"ds-chip\">Terraform</span></div>",
+      "css": ".ds-chiplist { display: flex; flex-wrap: wrap; gap: 0.4rem; } .ds-chip { padding: 0.28rem 0.6rem; border-radius: 999px; border: 1px solid var(--edge, #807b6d); font-family: var(--font-body, 'Hanken', ui-sans-serif, system-ui, sans-serif); font-size: 0.75rem; font-weight: 600; white-space: nowrap; color: var(--fg, #0c0c0d); }"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "nav",
+      "refersTo": "seg",
+      "description": "Theme and language switches. Discs carrying no chrome of their own, because they sit inside the header's own pill; groups are divided by a single inline-start hairline.",
+      "html": "<div class=\"ds-controls\"><div class=\"ds-seg-group\" role=\"group\" aria-label=\"Language\"><a class=\"ds-seg ds-seg--text\" href=\"#\" aria-current=\"true\">FR</a><a class=\"ds-seg ds-seg--text\" href=\"#\">EN</a></div><div class=\"ds-seg-group\" role=\"group\" aria-label=\"Theme\"><button type=\"button\" class=\"ds-seg\" aria-pressed=\"false\" title=\"Light\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"3\"/><path d=\"M8 1.5v1.2M8 13.3v1.2M14.5 8h-1.2M2.7 8H1.5M12.6 3.4l-.85.85M4.25 11.75l-.85.85M12.6 12.6l-.85-.85M4.25 4.25l-.85-.85\"/></svg></button><button type=\"button\" class=\"ds-seg\" aria-pressed=\"false\" title=\"Dark\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M13.5 9.6A5.8 5.8 0 0 1 6.4 2.5a5.8 5.8 0 1 0 7.1 7.1Z\"/></svg></button><button type=\"button\" class=\"ds-seg\" aria-pressed=\"true\" title=\"System\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"1.75\" y=\"2.75\" width=\"12.5\" height=\"8.5\" rx=\"1.5\"/><path d=\"M5.75 14.25h4.5\"/></svg></button></div></div>",
+      "css": ".ds-controls { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.3rem; border-radius: 999px; background: var(--bg, #f1efe8); border: 1px solid var(--edge, #807b6d); } .ds-seg-group { display: inline-flex; align-items: center; gap: 2px; } .ds-seg-group + .ds-seg-group { margin-inline-start: 0.35rem; padding-inline-start: 0.4rem; border-inline-start: 1px solid var(--edge, #807b6d); } .ds-seg { display: inline-grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 999px; border: 0; background: none; cursor: pointer; color: var(--fg-3, #605e57); text-decoration: none; font-family: var(--font-body, 'Hanken', ui-sans-serif, system-ui, sans-serif); transition: background-color 240ms cubic-bezier(0.16,1,0.3,1), color 240ms cubic-bezier(0.16,1,0.3,1); } .ds-seg--text { width: auto; padding-inline: 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; } .ds-seg:hover { color: var(--fg, #0c0c0d); } .ds-seg[aria-pressed=\"true\"], .ds-seg[aria-current=\"true\"] { background: var(--fg, #0c0c0d); color: var(--bg, #f1efe8); } .ds-seg:focus-visible { outline: 3px solid var(--focus, #0c0c0d); outline-offset: 2px; }"
+    },
+    {
+      "name": "Nav Roll Link",
+      "kind": "nav",
+      "refersTo": "nav-roll",
+      "description": "Section navigation. The label is stacked twice inside a clipped 1.35em box; on hover the first copy slides out upward and the second, in --link, slides in from below. The duplicate is aria-hidden.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Sections\"><a class=\"ds-roll\" href=\"#work\"><span>Work</span><span aria-hidden=\"true\">Work</span></a><a class=\"ds-roll\" href=\"#path\"><span>Path</span><span aria-hidden=\"true\">Path</span></a><a class=\"ds-roll\" href=\"#contact\"><span>Contact</span><span aria-hidden=\"true\">Contact</span></a></nav>",
+      "css": ".ds-nav { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.3rem; border-radius: 999px; background: var(--bg, #f1efe8); border: 1px solid var(--edge, #807b6d); } .ds-roll { position: relative; display: inline-grid; overflow: hidden; height: 1.35em; padding-inline: 0.85rem; border-radius: 999px; font-family: var(--font-body, 'Hanken', ui-sans-serif, system-ui, sans-serif); font-size: 0.9375rem; font-weight: 600; text-decoration: none; color: var(--fg, #0c0c0d); align-content: start; transition: background-color 240ms cubic-bezier(0.16,1,0.3,1); } .ds-roll span { display: block; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); } .ds-roll span:last-child { position: absolute; inset-inline: 0.85rem; top: 0; transform: translateY(100%); color: var(--link, #241fe6); } .ds-roll:hover span:first-child { transform: translateY(-100%); } .ds-roll:hover span:last-child { transform: translateY(0); } .ds-roll:focus-visible { outline: 3px solid var(--focus, #0c0c0d); outline-offset: 2px; }"
+    },
+    {
+      "name": "Work Index Row",
+      "kind": "custom",
+      "refersTo": "work-row",
+      "description": "The signature component, and the mechanism that stands in for photography. Hovering (or focusing into) a row drenches the full viewport width in ultramarine: the type inverts to bone, the index number and arrow go acid, the title slides right and the arrow rotates -45 degrees. The field grows from the top on entry and retracts to the bottom on exit, so it reads as directional rather than as a fade.",
+      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\"><a class=\"ds-row-link\" href=\"#\"><span class=\"ds-row-n\" aria-hidden=\"true\">01</span><span><span class=\"ds-row-year\"><span class=\"ds-row-live\" aria-hidden=\"true\"></span>2024 — present</span><h3 class=\"ds-row-title\">Observability rebuild<span class=\"ds-row-org\">Internal platform</span></h3></span><span class=\"ds-row-sum\">Median detection dropped from thirty-eight minutes to under two.</span><span class=\"ds-row-go\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></span></a></li></ul>",
+      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule, #cbc7ba); } .ds-row { border-bottom: 1px solid var(--rule, #cbc7ba); position: relative; } .ds-row::before { content: \"\"; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; background: var(--drench, #241fe6); transform: scaleY(0); transform-origin: bottom center; transition: transform 520ms cubic-bezier(0.76, 0, 0.24, 1); pointer-events: none; } .ds-row:hover::before, .ds-row:focus-within::before { transform: scaleY(1); transform-origin: top center; } .ds-row-link { position: relative; display: grid; grid-template-columns: 3.5rem minmax(0, 0.9fr) minmax(0, 1fr) 2.75rem; gap: 1.5rem; align-items: center; padding-block: clamp(1.1rem, 2.2vw, 2rem); text-decoration: none; color: var(--fg, #0c0c0d); transition: color 260ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row-link, .ds-row:focus-within .ds-row-link { color: var(--on-drench, #f1efe8); } .ds-row-n { font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: 0.9375rem; font-variant-numeric: tabular-nums; color: var(--fg-3, #605e57); transition: color 260ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row-n { color: var(--acid, #d8ff4a); } .ds-row-year { font-size: 0.75rem; font-variant-numeric: tabular-nums; letter-spacing: 0.08em; color: var(--fg-3, #605e57); display: block; margin-bottom: 0.35rem; } .ds-row-live { display: inline-block; width: 7px; height: 7px; border-radius: 99px; background: var(--acid, #d8ff4a); border: 1px solid var(--ink, #0c0c0d); margin-inline-end: 0.4rem; vertical-align: 0.05em; } .ds-row-title { margin: 0; font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: clamp(1.5rem, 2.7vw, 2.5rem); line-height: 1; letter-spacing: -0.03em; display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; transition: transform 420ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row-title { transform: translateX(0.5rem); } .ds-row-org { font-family: var(--font-body, 'Hanken', ui-sans-serif, sans-serif); font-size: 0.9375rem; font-weight: 400; letter-spacing: 0; color: var(--fg-3, #605e57); } .ds-row:hover .ds-row-org { color: color-mix(in srgb, var(--on-drench, #f1efe8) 78%, transparent); } .ds-row-sum { font-family: var(--font-body, 'Hanken', ui-sans-serif, sans-serif); font-size: 0.9375rem; color: var(--fg-2, #4d4c48); text-wrap: pretty; } .ds-row:hover .ds-row-sum { color: color-mix(in srgb, var(--on-drench, #f1efe8) 85%, transparent); } .ds-row-go { justify-self: end; display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 999px; border: 1px solid currentColor; transition: transform 420ms cubic-bezier(0.16,1,0.3,1), background-color 260ms cubic-bezier(0.16,1,0.3,1), color 260ms cubic-bezier(0.16,1,0.3,1); } .ds-row:hover .ds-row-go { background: var(--acid, #d8ff4a); border-color: var(--acid, #d8ff4a); color: var(--ink, #0c0c0d); transform: translateX(0.35rem) rotate(-45deg); } .ds-row-link:focus-visible { outline: 3px solid var(--acid, #d8ff4a); outline-offset: -3px; } @media (max-width: 1000px) { .ds-row-link { grid-template-columns: 2.5rem minmax(0, 1fr) 2.5rem; row-gap: 0.5rem; } .ds-row-sum { grid-column: 2; max-width: 52ch; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; } }"
+    },
+    {
+      "name": "Marquee Band",
+      "kind": "custom",
+      "refersTo": "marquee-band",
+      "description": "A full-bleed ink band of what he does, running edge to edge with the four-point star as separator. The item list is duplicated and the track rendered twice so the -50% translate loops seamlessly. Pauses on hover, stops under reduced motion, aria-hidden throughout — texture, never the only place information appears.",
+      "html": "<div class=\"ds-band-ink\"><div class=\"ds-marquee\" aria-hidden=\"true\"><div class=\"ds-marquee-track\"><div style=\"display:flex\"><span class=\"ds-marquee-item\"><svg class=\"ds-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg>Fullstack</span><span class=\"ds-marquee-item\"><svg class=\"ds-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg>Product</span><span class=\"ds-marquee-item\"><svg class=\"ds-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg>Shipped</span></div><div style=\"display:flex\"><span class=\"ds-marquee-item\"><svg class=\"ds-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg>Fullstack</span><span class=\"ds-marquee-item\"><svg class=\"ds-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg>Product</span><span class=\"ds-marquee-item\"><svg class=\"ds-star\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg>Shipped</span></div></div></div></div>",
+      "css": ".ds-band-ink { background: var(--ink, #0c0c0d); color: var(--bone, #f1efe8); } .ds-marquee { overflow: hidden; border-block: 1px solid currentColor; padding-block: clamp(0.4rem, 1vw, 0.9rem); user-select: none; } .ds-marquee-track { display: flex; width: max-content; animation: ds-slide 38s linear infinite; } .ds-marquee:hover .ds-marquee-track { animation-play-state: paused; } .ds-marquee-item { display: flex; align-items: center; gap: 0.5em; padding-inline-end: 0.5em; font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: clamp(1.75rem, 5.4vw, 4.5rem); line-height: 1.05; letter-spacing: -0.04em; text-transform: uppercase; white-space: nowrap; } .ds-star { width: 0.42em; height: 0.42em; flex: none; color: var(--acid, #d8ff4a); } @keyframes ds-slide { to { transform: translateX(-50%); } } @media (prefers-reduced-motion: reduce) { .ds-marquee-track { animation: none; } }"
+    },
+    {
+      "name": "Rotating Badge",
+      "kind": "custom",
+      "refersTo": "rotating-badge",
+      "description": "Text on a 37-unit-radius circle turning over 24s, with the four-point star at its centre. The ring counts its own capacity — circumference about 232 units, a glyph at 7.4px with 0.24em tracking costs about 5.6 units, so about 41 characters fit and the phrase repeats only as many times as fit. Change the size or tracking and you change the capacity.",
+      "html": "<div class=\"ds-badge\" aria-hidden=\"true\"><svg viewBox=\"0 0 100 100\"><defs><path id=\"ds-badge-path\" d=\"M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0\"/></defs><g class=\"ds-badge-ring\"><text><textPath href=\"#ds-badge-path\" startOffset=\"0\">FULLSTACK &amp; PRODUCT ENGINEER · </textPath></text></g><path class=\"ds-badge-star\" transform=\"translate(38 38)\" d=\"M12 0c.5 6.3 5.7 11.5 12 12-6.3.5-11.5 5.7-12 12-.5-6.3-5.7-11.5-12-12C6.3 11.5 11.5 6.3 12 0Z\"/></svg></div>",
+      "css": ".ds-badge { width: clamp(8rem, 13vw, 13rem); height: clamp(8rem, 13vw, 13rem); position: relative; flex: none; color: var(--fg, #0c0c0d); } .ds-badge svg { width: 100%; height: 100%; } .ds-badge-ring { animation: ds-spin 24s linear infinite; transform-origin: 50% 50%; } .ds-badge text { font-family: var(--font-body, 'Hanken', ui-sans-serif, sans-serif); font-size: 7.4px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; fill: currentColor; } .ds-badge-star { fill: var(--drench, #241fe6); } @keyframes ds-spin { to { transform: rotate(360deg); } } @media (prefers-reduced-motion: reduce) { .ds-badge-ring { animation: none; } }"
+    },
+    {
+      "name": "Drenched Close",
+      "kind": "card",
+      "refersTo": "contact-close",
+      "description": "The contact section: a full-bleed ultramarine field with the headline carrying its one italic word, the email address set as display type, and the name repeated at hero scale at 0.16 opacity as a ghosted watermark. Colour at page scale is what this system uses where the references use photography.",
+      "html": "<section class=\"ds-close\"><div class=\"ds-close-inner\"><h2 class=\"ds-close-title\">Let's work <span class=\"ds-em\">together</span></h2><a class=\"ds-close-mail\" href=\"#\">hello@example.com<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 11l6-6M5.6 5h5.4v5.4\"/></svg></a><p class=\"ds-close-name\" aria-hidden=\"true\">SHIRON BESKIWIN</p></div></section>",
+      "css": ".ds-close { background: var(--drench, #241fe6); color: var(--on-drench, #f1efe8); width: 100%; padding-inline: clamp(1.25rem, 0.5rem + 3.2vw, 3.5rem); padding-block: clamp(4rem, 2rem + 7vw, 9rem); overflow: hidden; } .ds-close-inner { max-width: 1400px; margin-inline: auto; } .ds-close-title { margin: 0; max-width: 14ch; font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: clamp(2.5rem, 7.2vw, 7.5rem); line-height: 0.88; letter-spacing: -0.045em; text-wrap: balance; } .ds-em { font-family: var(--font-serif, 'Bodoni Moda', Georgia, serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; padding-inline-end: 0.06em; } .ds-close-mail { display: inline-flex; align-items: center; gap: 0.4em; margin-top: 2.5rem; font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: clamp(1.5rem, 4.4vw, 3.5rem); letter-spacing: -0.04em; line-height: 1.05; text-decoration: none; color: inherit; word-break: break-word; } .ds-close-mail:hover { color: var(--acid, #d8ff4a); } .ds-close-mail:focus-visible { outline: 3px solid var(--acid, #d8ff4a); outline-offset: 2px; } .ds-close-name { margin: 4.5rem 0 0; font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: min(17.6vw, 17rem); text-transform: uppercase; opacity: 0.16; line-height: 0.78; letter-spacing: -0.055em; pointer-events: none; user-select: none; }"
+    },
+    {
+      "name": "Entrance Panel",
+      "kind": "custom",
+      "refersTo": "entrance-panel",
+      "description": "A counter to 100 over an ink field, once per session, with an acid progress rule along the bottom. Whether it plays at all is decided before first paint, so it is present from the first frame or never. Its exit is a CSS keyframe on purpose: requestAnimationFrame is throttled in background tabs, and an overlay whose only way out is a JS frame can sit over the page indefinitely. It never locks scroll and never gates content.",
+      "html": "<div class=\"ds-preloader\" aria-hidden=\"true\"><p class=\"ds-preloader-count\">100<sup>%</sup></p><div class=\"ds-preloader-word\"><span>Shiron Beskiwin</span><span>Fullstack engineer</span></div><div class=\"ds-preloader-rule\"></div></div>",
+      "css": ".ds-preloader { display: grid; place-items: center; position: relative; height: 22rem; overflow: hidden; background: var(--ink, #0c0c0d); color: var(--bone, #f1efe8); animation: ds-enter-exit 1150ms cubic-bezier(0.76, 0, 0.24, 1) forwards; } .ds-preloader-count { margin: 0; font-family: var(--font-display, 'Bricolage', ui-sans-serif, sans-serif); font-weight: 700; font-size: clamp(4rem, 17vw, 15rem); line-height: 1; letter-spacing: -0.06em; font-variant-numeric: tabular-nums; } .ds-preloader-count sup { font-size: 0.28em; vertical-align: super; letter-spacing: 0; margin-inline-start: 0.1em; } .ds-preloader-word { position: absolute; bottom: 1.5rem; left: clamp(1.25rem, 3.2vw, 3.5rem); right: clamp(1.25rem, 3.2vw, 3.5rem); display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-body, 'Hanken', ui-sans-serif, sans-serif); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; } .ds-preloader-rule { position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: var(--acid, #d8ff4a); transform-origin: left center; } @keyframes ds-enter-exit { 0%, 74% { transform: none; } 100% { transform: translateY(-101%); pointer-events: none; } } @media (prefers-reduced-motion: reduce) { .ds-preloader { animation: none; } }"
+    },
+    {
+      "name": "Notice Bar",
+      "kind": "custom",
+      "refersTo": "notice-bar",
+      "description": "Acid ground, ink text, sitting inside the fixed header above the bar so its height is counted into the measured --header-h. It names the sample content and the unconfigured destinations, and renders nothing once neither is true. Scaffolding for the placeholder phase, not a permanent design element.",
+      "html": "<div class=\"ds-notice\" role=\"note\"><div class=\"ds-notice-inner\"><p>Sample content — the projects and history below are invented. Still to configure: CV, GitHub, LinkedIn.</p></div></div>",
+      "css": ".ds-notice { background: var(--acid, #d8ff4a); color: var(--ink, #0c0c0d); font-family: var(--font-body, 'Hanken', ui-sans-serif, sans-serif); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.01em; padding-block: 0.45rem; padding-inline: clamp(1.25rem, 0.5rem + 3.2vw, 3.5rem); position: relative; } .ds-notice-inner { max-width: 1400px; margin-inline: auto; display: flex; align-items: center; gap: 0.5rem; } .ds-notice p { margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Poster That Reads Back",
+    "overview": "This is a poster you can scroll. The name is set edge to edge at the scale it would have on a wall, and the page is built from full-width horizontal bands that each take a whole colour — never a neutral page with accents sprinkled over it. There are no cards, no shadows, no floating containers and no boxed layouts. Depth is made from grounds against each other and from hairline rules, nothing else. Where the reference sites use photography to carry the visual weight, this system uses colour arriving at page scale and type set larger than seems reasonable.\n\nThe build ships no imagery at all and there is no image generation available for it. That is the governing constraint, not a temporary gap: the creative load rests entirely on typography, colour fields, motion and layout. Two slots (.row-thumb in the work index, .proj-media on the project page) are wired to project.cover and stay inert until real screenshots arrive; adding one must not change the world around it.\n\nThis design replaces a first build that executed the developer-portfolio category standard and was rejected outright by the user (\"On y est pas du tout\", \"beaucoup trop générique\"). The rejected system — a neutral page, a hairline index, one small accent colour — is the confirmed anti-reference. Four sites were pinned in its place (gusta.studio, dineshrevunuru.com, huuuuue.agency, ryanritzenthaler.com), and their shared mechanism binds future work: display type as the primary content at absurd scale, two typefaces inside one headline, full-bleed colour fields, a marquee band, a rotating badge, and media treated as an object rather than a card.",
+    "keyCharacteristics": [
+      "Display type at poster scale, edge to edge, uppercase for the name",
+      "Full-bleed colour fields that own entire sections and entire index rows",
+      "Bone over ink, or ink over bone — the same world inverted, both authored by hand",
+      "Exactly one didone italic word per headline, never two",
+      "Zero shadows, zero cards, zero intermediate corner radii",
+      "Every motion has a complete prefers-reduced-motion off-switch"
+    ],
+    "rules": [
+      { "name": "The Field Rule", "body": "Colour arrives as a field that owns a whole band or a whole row, edge to edge across the viewport. --drench is never an accent, never a border, never a small fill, never a hover tint on a corner. The work row proves the rule: its ::before is 100vw wide with a -50vw offset so the band escapes the container and runs the real width of the page.", "section": "colors" },
+      { "name": "The Acid Means Live Rule", "body": "--acid has exactly one semantic in content: this is currently running. A live role, an open-ended project. Anything else that wants attention uses --link or the drench. Using acid as a decorative highlight destroys the only signal in the system that carries meaning by colour alone.", "section": "colors" },
+      { "name": "The Background-Only Rule", "body": "--drench is a background. Text never takes it. Three separate roles exist because the same value cannot do all three jobs: --drench (field), --link (text — blue on bone, acid on ink), --focus (ring — ink on bone, acid on ink, because acid on bone is 1.00:1). Do not collapse them.", "section": "colors" },
+      { "name": "The Inversion Rule", "body": "Light and dark are the same world with the grounds swapped, both written by hand — dark is not a filter over light. .band--ink therefore inverts in dark (bone ground, ink text) so that a field stays a field instead of collapsing into the page ground it would otherwise match.", "section": "colors" },
+      { "name": "The 4.5 Floor", "body": "Every text pair in both themes clears 4.5:1, the lowest measuring 4.64:1. Interactive borders use --edge at 3.67:1 light and 3.43:1 dark. Anyone who changes --blue or --acid re-verifies every pair in both themes before shipping — those two values are load-bearing for the whole contrast budget.", "section": "colors" },
+      { "name": "The One Italic Word Rule", "body": "The .em span is exactly one word per headline. Not a phrase, not two words, not a whole clause. The build uses it twice on the whole site — \"produits entiers\" and \"Travaillons ensemble\" — and that restraint is the rule. A second .em inside the same headline is a defect, not a variation.", "section": "typography" },
+      { "name": "The Three Jobs Rule", "body": "Three faces, one job each: Bricolage displays, Hanken reads, Bodoni emphasises. No face takes a second job, and there is no fourth face. Labels and metadata are Hanken tracked out, never a mono or a condensed cut.", "section": "typography" },
+      { "name": "The Name Sizes Itself Rule", "body": "--hero-ch is computed in Home.tsx from the longest line of the name (Math.max(first.length, last.length, 5)) and feeds --d-hero, which takes the smallest of 17.6vw, 17rem, and the width that actually fits between the gutters. A longer name shrinks; it is never clipped by overflow-x: hidden. Never hardcode a hero font-size, and never remove the inline --hero-ch.", "section": "typography" },
+      { "name": "The Tight-Tracking Rule", "body": "Display type is negatively tracked and its line-height sits below 1 (0.8 at hero, 0.88 at Display 1). Label type is the opposite: positively tracked at 0.14em and uppercase. There is no neutral middle — type is either packed or spaced out.", "section": "typography" },
+      { "name": "The Measured Header Rule", "body": "The header is fixed and measures itself: a ResizeObserver in Header.tsx publishes el.offsetHeight as --header-h on <html> (falling back to a resize listener, with a 5.5rem first-paint default in :root). The hero and the project page reserve exactly calc(var(--header-h) + …), and scroll-padding-top uses it too. This exists because the placeholder notice bar's height changes with text wrapping and language. Never hardcode a top offset; always spend --header-h.", "section": "layout" },
+      { "name": "The Band Rule", "body": "A new section is a .band with an .inner. If it takes colour it takes .band--drench, .band--sunk or .band--ink on the band element. A section that needs its own background but sits inside another band is a mistake — nest a .band inside a plain coloured wrapper instead, the way the ink band wraps the marquee and the statement.", "section": "layout" },
+      { "name": "The Nothing-Disappears Rule", "body": "Narrow viewports rearrange; they do not hide. Below 900px the header nav becomes its own horizontally-scrollable row inside the fixed bar rather than folding into a menu, so no section is unreachable. Below 1000px the row summary moves under the title and line-clamps rather than vanishing. A responsive rule that deletes content is a bug.", "section": "layout" },
+      { "name": "The No-Card Rule", "body": "Nothing is a card. Content is never wrapped in a bordered, radiused, shadowed, background-filled box to group it. Grouping is done by hairline, by band colour, or by grid position. A project entry is a row on a rule, not a tile; a project image is an object in the flow, not a thumbnail in a frame.", "section": "elevation" },
+      { "name": "The Two Radii Rule", "body": "999px or 0. There is no 4px, no 8px, no 12px. If a new element needs a corner, decide whether it is an interactive control (pill) or a structural surface (square) — there is no third answer.", "section": "shapes" },
+      { "name": "The One Icon System Rule", "body": "Icons are drawn in a 16px box, 1.6 stroke, round caps and joins, currentColor, from the shared base spread in components/icons.tsx. No icon font, no icon package, no glyph characters, no mixed stroke weights. A new icon is added to that file with the same base.", "section": "shapes" },
+      { "name": "The CSS Owns the Exit Rule", "body": "Anything that covers the page exits by CSS animation. JavaScript may drive the contents — the entrance panel's digits — but must never be the only way out: requestAnimationFrame is throttled in background tabs and low-power modes, and this shipped once as a panel that sat over the page indefinitely. The overlay is also decided before first paint, so it is present from the first frame or never, and it never locks scroll or gates content.", "section": "components" },
+      { "name": "The Contiguous Block Rule", "body": "Two cascade bugs shipped during this build, both the same shape: a later same-specificity rule silently overriding an earlier display declaration. Every rule that controls one element's display therefore lives in a single contiguous block — the .preloader rules are kept that way deliberately, default and armed state together. Do not scatter an element's display across the stylesheet.", "section": "components" },
+      { "name": "The Reduced-Motion Total Rule", "body": "Every animation has a prefers-reduced-motion branch that turns it fully off, and an entrance-style overlay is skipped entirely rather than shortened. The global reset collapses durations, and the entrance, marquee and badge each carry their own explicit off-switch on top of it.", "section": "components" }
+    ],
+    "dos": [
+      "Do put colour on a .band, at full viewport width, owning the whole section — the Field Rule.",
+      "Do reserve header space with calc(var(--header-h) + …) on any page that starts at the top of the viewport — the Measured Header Rule.",
+      "Do use exactly one .em word per headline, in Bodoni Moda italic — the One Italic Word Rule.",
+      "Do reach for --link when blue needs to be text, and --focus when it needs to be a ring; --drench is a background only.",
+      "Do give every animation a prefers-reduced-motion: reduce branch that turns it fully off, and make an entrance-style overlay skip, not shorten.",
+      "Do let CSS own the exit of anything that covers the page. JavaScript may drive the contents; it must never be the only way out.",
+      "Do keep all rules that control one element's display in a single contiguous block, .preloader-style.",
+      "Do mirror every :hover state onto :focus-within / :focus-visible, as the work row does.",
+      "Do collapse a grid to one column at the width its own content breaks at, and move content rather than hiding it.",
+      "Do add new icons to components/icons.tsx on the shared 16px / 1.6-stroke base."
+    ],
+    "donts": [
+      "Don't add a shadow. Not on hover, not on a \"card\", not as a glow. The only box-shadow in the system is the focus-ring halo.",
+      "Don't wrap content in a bordered, radiused, filled box to group it — the No-Card Rule.",
+      "Don't introduce a corner radius between 0 and 999px — the Two Radii Rule.",
+      "Don't use --acid for anything except live in content, or as the counter-colour inside a drenched/ink field. It is never text on bone (1.00:1).",
+      "Don't set --drench as a text colour (2.9:1 on the dark ground), and don't change --blue or --acid without re-verifying every text pair in both themes against the 4.5:1 floor.",
+      "Don't add a fourth typeface, and don't give an existing one a second job.",
+      "Don't hardcode a hero font-size or drop the inline --hero-ch; the name must be able to shrink instead of clipping.",
+      "Don't hide navigation or content at narrow widths — rearrange it.",
+      "Don't treat imagery as a thumbnail in a frame. .row-thumb and .proj-media are wired for real screenshots; an image arrives as an object in the flow, filling its slot with object-fit: cover and no border, radius or shadow.",
+      "Don't re-introduce the rejected category standard: a neutral page with a hairline index and a single small accent colour is the confirmed anti-reference for this project."
+    ]
+  }
+}
