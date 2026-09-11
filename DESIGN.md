@@ -415,7 +415,7 @@ The mechanism that replaces photography.
 ### Entrance Panel — signature component
 - Full-viewport ink panel, bone digits at clamp 4rem→15rem tabular display type with a 0.28em superscript `%`, name and role as labels along the bottom, and an acid 3px progress rule whose `scaleX` tracks the count.
 - **Plays on every arrival, refresh included** (changed 2026-09-11; it was once per session), and only when the pre-paint boot script in `RootShell.tsx` set `data-enter="1"` on `<html>` — so it is present from the very first frame or never, and never drops onto an already-painted page.
-- **Its exit is a CSS keyframe**, `enter-exit` 1150ms `--ease-io`, holding until 74% then wiping up to `translateY(-101%)`. JavaScript owns the digits and nothing else.
+- **Its exit is a CSS keyframe**, `enter-exit` 1800ms `--ease-io`, holding until 83.3% (the 1500ms count; lengthened from 820ms on 2026-09-11 at the user's request, the first cut was too quick) then wiping up to `translateY(-101%)` over the last 300ms. JavaScript owns the digits and nothing else.
 - Never gates content: no scroll lock, no focus trap, the page is complete underneath it the whole time. Skipped entirely under reduced motion.
 
 ### Hero Fluid — signature component

@@ -30,7 +30,7 @@ export default function Preloader({ lang }: { lang: Lang }) {
   useEffect(() => {
     if (document.documentElement.dataset.enter !== "1") return;
     const start = Date.now();
-    const DUR = 820;
+    const DUR = 1500;
     const id = window.setInterval(() => {
       const p = Math.min(1, (Date.now() - start) / DUR);
       setN(Math.round(p * 100));
@@ -38,7 +38,7 @@ export default function Preloader({ lang }: { lang: Lang }) {
     }, 24);
     const off = window.setTimeout(() => {
       delete document.documentElement.dataset.enter;
-    }, 1400);
+    }, 2100);
     return () => {
       window.clearInterval(id);
       window.clearTimeout(off);

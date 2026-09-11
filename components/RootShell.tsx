@@ -22,7 +22,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
    plays at all — so the overlay is either there from the first frame or never,
    and it never drops onto an already-painted page. It plays on every arrival,
    refresh included; only reduced motion skips it. */
-const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var s=localStorage.getItem("theme");var m=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=s==="light"||s==="dark"?s:(m?"dark":"light");d.setAttribute("data-theme",t);d.dataset.themeChoice=s||"system";}catch(e){}try{var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduce){d.dataset.enter="1";d.style.setProperty("--enter-delay","980ms");}}catch(e){}})();`;
+const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var s=localStorage.getItem("theme");var m=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=s==="light"||s==="dark"?s:(m?"dark":"light");d.setAttribute("data-theme",t);d.dataset.themeChoice=s||"system";}catch(e){}try{var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduce){d.dataset.enter="1";d.style.setProperty("--enter-delay","1630ms");}}catch(e){}})();`;
 
 export default function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const t = dict(lang);

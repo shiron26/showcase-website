@@ -44,7 +44,7 @@ Rules that came out of it, measured rather than judged by eye: the statement ban
 
 ## Memorable moment
 
-The entrance counter: 0→100 over 900ms, then the panel wipes up. Once per session (`sessionStorage`), skipped entirely under `prefers-reduced-motion`, and it never gates content — the page renders underneath it the whole time.
+The entrance: the monogram fills 0→100 over 1.5s, then the panel wipes up. On every arrival, skipped entirely under `prefers-reduced-motion`, and it never gates content — the page renders underneath it the whole time.
 
 ## Constraints
 

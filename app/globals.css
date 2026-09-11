@@ -407,7 +407,7 @@ body {
 }
 :root[data-enter="1"] .preloader {
   display: grid;
-  animation: enter-exit 1150ms var(--ease-io) forwards;
+  animation: enter-exit 1800ms var(--ease-io) forwards;
 }
 @media (prefers-reduced-motion: reduce) {
   :root[data-enter="1"] .preloader {
@@ -415,9 +415,10 @@ body {
     animation: none;
   }
 }
+/* Holds while the count runs (1500ms in Preloader.tsx), then a 300ms wipe. */
 @keyframes enter-exit {
   0%,
-  74% {
+  83.3% {
     transform: none;
   }
   100% {
