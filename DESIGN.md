@@ -51,7 +51,7 @@ typography:
     fontWeight: 700
     lineHeight: 1
     letterSpacing: "-0.06em"
-    note: "The entrance counter. One use, --d-count."
+    note: "Retired 2026-09-11: the entrance counter is now the monogram filling up; the number is a tag-label."
   marquee:
     fontFamily: "Bricolage, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(1.75rem, 5.4vw, 4.5rem)"
@@ -580,7 +580,7 @@ Shiron supplied a hand-drawn "SB" monogram (a black S, a grey B) with the wordma
 
 Where it appears: the header pill, replacing the star-and-"SB" wordmark (monogram at 1.5rem); the footer (full logo at 4rem); and the favicons, `app/icon.png` (512) and `app/apple-icon.png` (180), the monogram on a white square as in the favicon Shiron drew, plus `public/favicon.ico` (32). In the hero, the monogram sits at the centre of the rotating badge (34% of its size, still while the ring turns), which is where a visitor's eye lands after the name. The four-point star stays the site's own mark everywhere else: marquee separator, missions bullet, the sign-off of the close, the texture of the fields.
 
-The entrance (added 2026-09-11): the light monogram sits top-left on the ink panel, its image box on the header mark's image box (same gutter, same pill inset), at clamp 2.5rem→3.75rem tall. It settles in over 720ms on `--ease` from 0.6rem below, then the counter runs; when the panel wipes up, the header's small mark is revealed exactly under where the big one stood. The panel is ink in both themes, so only the light file is rendered here — no theme pair.
+The entrance (added 2026-09-11, recomposed the same evening): the light monogram at the centre of the ink panel, clamp 6rem→13rem tall, drawn twice — a ghost at 14% and the full mark over it, clipped from the top by the progress so it fills from the foot up as the count runs. It settles in over 720ms on `--ease` from 0.6rem below. The number is no longer display type: it sits small in the bottom row between the name and the role, because the mark is the counter now. A first version put the mark top-left on the header's box as a hand-off; the user asked for it at the centre, loading. The panel is ink in both themes, so only the light file is rendered here — no theme pair.
 
 
 ## The mobile menu (added 2026-09-11)

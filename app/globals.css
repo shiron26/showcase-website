@@ -105,7 +105,6 @@
   --t-2xs: 0.6875rem;
 
   /* Component display roles. Each is one job, and each is on the record. */
-  --d-count: clamp(4rem, 17vw, 15rem);
   --d-marquee: clamp(1.75rem, 5.4vw, 4.5rem);
   --d-row: clamp(1.5rem, 2.7vw, 2.5rem);
   --d-mail: clamp(1.5rem, 4.4vw, 3.5rem);
@@ -427,18 +426,7 @@ body {
   }
 }
 .preloader-count {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: var(--d-count);
-  line-height: 1;
-  letter-spacing: -0.06em;
-  font-variant-numeric: tabular-nums;
-}
-.preloader-count sup {
-  font-size: 0.28em;
-  vertical-align: super;
-  letter-spacing: 0;
-  margin-inline-start: 0.1em;
+  color: var(--bone);
 }
 .preloader-word {
   position: absolute;
@@ -448,6 +436,14 @@ body {
   display: flex;
   justify-content: space-between;
   gap: var(--s-4);
+  white-space: nowrap;
+}
+/* Name, count and role measure ~336px at the label size; under 480px the
+   gutters leave ~350px, so the gap tightens to keep the row on one line. */
+@media (max-width: 480px) {
+  .preloader-word {
+    gap: var(--s-2);
+  }
 }
 .preloader-rule {
   position: absolute;
@@ -459,17 +455,28 @@ body {
   transform-origin: left center;
   transition: transform 120ms linear;
 }
-/* Top-left corner on the header mark's image box (pill padding, 1px border,
-   and the half-leading the inline-flex pill adds), so when the panel wipes up
-   the small mark is revealed exactly under the big one's origin. It settles
-   in, then the counter does the rest. */
+/* The mark at the centre, drawn twice: the ghost underneath, the full mark
+   over it clipped from the top by `--p` (0→1, set by the counter), so it
+   fills from the foot up. The short linear transition matches the counter's
+   tick, so the fill line glides instead of stepping. */
 .preloader-mark {
-  position: absolute;
-  top: calc(var(--s-4) + 0.5rem + 1px);
-  left: calc(var(--gutter) + 0.7rem + 1px);
-  height: clamp(2.5rem, 5vw, 3.75rem);
-  width: auto;
+  position: relative;
+  height: clamp(6rem, 18vw, 13rem);
   animation: preloader-mark-in 720ms var(--ease) 60ms both;
+}
+.preloader-mark img {
+  display: block;
+  height: 100%;
+  width: auto;
+}
+.preloader-mark-ghost {
+  opacity: 0.14;
+}
+.preloader-mark-fill {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(calc((1 - var(--p, 0)) * 100%) 0 0 0);
+  transition: clip-path 120ms linear;
 }
 @keyframes preloader-mark-in {
   from {
