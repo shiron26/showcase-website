@@ -3,8 +3,8 @@ import type { Lang } from "@/lib/i18n";
 /**
  * ─────────────────────────────────────────────────────────────────────────────
  *  THE ONLY FILE YOU NEED TO EDIT TO MAKE THIS SITE YOURS.
- *  Filled from Shiron's CV on 2026-09-08. The remaining TODOs are the two
- *  profile URLs and the CV PDF, which the CV itself does not carry.
+ *  Filled from Shiron's CV on 2026-09-08. The remaining TODOs are the
+ *  GitHub URL and the CV PDF, which the CV itself does not carry.
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
@@ -28,12 +28,12 @@ export const SITE = {
   emailConfirmed: true,
 
   /**
-   * TODO — your real profile URLs. Empty means the link is not rendered at all:
+   * TODO — your real GitHub URL. Empty means the link is not rendered at all:
    * a portfolio that ships a button to github.com/ is worse than one that ships
    * no button, so nothing appears here until you put a real URL in.
    */
   github: "",
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/shiron-beskiwin/",
 
   location: {
     fr: "Paris",
