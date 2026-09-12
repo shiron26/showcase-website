@@ -24,7 +24,7 @@ type Dict = {
   marquee: string[];
   statement: { before: string; em: string; after: string; why: string };
   /** The specimen label beside the portrait. */
-  portrait: { fig: string; note: string };
+  portrait: { fig: string; note: string; sign: string };
   nav: { work: string; path: string; skills: string; contact: string; sections: string; menu: string; close: string };
   skip: string;
   hero: {
@@ -52,9 +52,9 @@ type Dict = {
   /** The three counters under the statement: roles, freelance missions, personal projects. */
   counts: { roles: [string, string]; freelance: [string, string]; perso: [string, string] };
   /** The scrubbed education panel: kicker, lead, and the four labels around the word. */
-  education: { title: string; lead: string; city: string; years: string; degree: string; school: string };
+  education: { title: string; lead: string; sign: string; city: string; years: string; degree: string; school: string };
   skills: { title: string; lead: string };
-  contact: { title: string; titleEm: string; lead: string; email: string; cvNote: string };
+  contact: { title: string; titleEm: string; lead: string; email: string; cvNote: string; sign: string; available: string };
   project: {
     back: string;
     context: string;
@@ -71,7 +71,6 @@ type Dict = {
     notFoundHint: string;
     pagination: string;
   };
-  theme: { label: string; light: string; dark: string };
   langSwitch: { label: string };
   placeholder: { chip: string; banner: string; bannerLink: string; missing: string; emailUnconfirmed: string };
   footer: { rights: string };
@@ -83,12 +82,12 @@ export const DICT: Record<Lang, Dict> = {
     badge: "Software Engineer",
     marquee: ["Fullstack", "Back-end", "Automatisation", "IA", "Livré"],
     statement: {
-      before: "Je livre des produits",
+      before: "Je livre des\nproduits",
       em: "entiers",
       after: "Du problème posé à la version que des gens utilisent.",
       why: "Ce qui me plaît dans ce métier, c'est son impact sur les autres : un processus automatisé, c'est du temps rendu à une équipe et de la performance gagnée pour l'organisation. C'est aussi un métier qui change de terrain à chaque expérience (la santé, la finance, le BTP, etc.) et qui demande de comprendre chacun d'eux. Cette variété nourrit ma curiosité, et c'est pour elle que je cherche les projets qui me sortent de ma zone de confort.",
     },
-    portrait: { fig: "Fig. 01 — Portrait", note: "Bichromie ink / bone" },
+    portrait: { fig: "Fig. 01 — Portrait", note: "Bichromie ink / bone", sign: "C'est moi" },
     nav: {
       work: "Réalisations",
       path: "Parcours",
@@ -139,6 +138,7 @@ export const DICT: Record<Lang, Dict> = {
     education: {
       title: "Formation",
       lead: "Cinq ans à apprendre en construisant.",
+      sign: "Diplômé de",
       city: "Ville",
       years: "Années",
       degree: "Diplôme",
@@ -154,6 +154,8 @@ export const DICT: Record<Lang, Dict> = {
       lead: "Une mission, un poste, ou juste une question sur un projet : écris-moi, je réponds.",
       email: "M'écrire",
       cvNote: "Le CV complet est aussi disponible en PDF.",
+      sign: "à bientôt",
+      available: "Disponible pour un poste ou une mission",
     },
     project: {
       back: "Tous les projets",
@@ -171,7 +173,6 @@ export const DICT: Record<Lang, Dict> = {
       notFoundHint: "Il a peut-être été renommé. Voici le catalogue complet.",
       pagination: "Projet précédent et suivant",
     },
-    theme: { label: "Thème", light: "Clair", dark: "Sombre" },
     langSwitch: { label: "Langue" },
     placeholder: {
       chip: "Exemple",
@@ -187,12 +188,12 @@ export const DICT: Record<Lang, Dict> = {
     badge: "Software Engineer",
     marquee: ["Fullstack", "Back-end", "Automation", "AI", "Shipped"],
     statement: {
-      before: "I ship products, start to",
+      before: "I ship products,\nstart to",
       em: "finish",
       after: "From the problem posed to the version people actually use.",
       why: "What I like about this job is its impact on others: an automated process is time given back to a team and performance gained for the organisation. It is also a job that changes ground with every experience (healthcare, finance, construction, etc.) and asks you to understand each of them. That variety feeds my curiosity, and it is why I look for the projects that take me out of my comfort zone.",
     },
-    portrait: { fig: "Fig. 01 — Portrait", note: "Ink / bone duotone" },
+    portrait: { fig: "Fig. 01 — Portrait", note: "Ink / bone duotone", sign: "That's me" },
     nav: {
       work: "Work",
       path: "Path",
@@ -243,6 +244,7 @@ export const DICT: Record<Lang, Dict> = {
     education: {
       title: "Education",
       lead: "Five years of learning by building.",
+      sign: "Graduate of",
       city: "City",
       years: "Years",
       degree: "Degree",
@@ -258,6 +260,8 @@ export const DICT: Record<Lang, Dict> = {
       lead: "A role, a project, or just a question about something here: write to me, I answer.",
       email: "Email me",
       cvNote: "The full CV is also available as a PDF.",
+      sign: "see you soon",
+      available: "Available for a role or a mission",
     },
     project: {
       back: "All projects",
@@ -275,7 +279,6 @@ export const DICT: Record<Lang, Dict> = {
       notFoundHint: "It may have been renamed. Here is the full catalogue.",
       pagination: "Previous and next project",
     },
-    theme: { label: "Theme", light: "Light", dark: "Dark" },
     langSwitch: { label: "Language" },
     placeholder: {
       chip: "Sample",

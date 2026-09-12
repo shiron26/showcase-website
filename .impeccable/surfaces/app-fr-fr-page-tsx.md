@@ -2,7 +2,7 @@
 version: 1
 slug: "app-fr-fr-page-tsx"
 primary_target: "app/(fr)/fr/page.tsx"
-related_targets: ["app/(en)/en/page.tsx","components/Home.tsx"]
+related_targets: ["app/(en)/en/page.tsx","components/Home.tsx","components/Footer.tsx"]
 ---
 
 ## Scope
@@ -41,6 +41,10 @@ What holds: the photograph is cut to an **arch** (`border-radius: 999px 999px 0 
 Rules that came out of it, measured rather than judged by eye: the statement band is pinned to ink in **both** themes (the grade cannot survive an inverted ground, so the marquee above keeps its own inverting band and provides the separation), and the sentence never overlaps the photograph — at desktop width the two sit in clean columns, and on narrow screens the arch stands above the text. An earlier overlapping version measured 1.34:1 for bone type over the near-white shirt.
 
 **The transposition that replaces imagery:** the work index is a set of full-bleed bands, and hovering one **drenches the whole band in ultramarine** — the type inverts to bone, the index number and the arrow go acid. That is the mechanism the references get from photography, done with colour and type instead.
+
+## The close (2026-09-12)
+
+The contact section and the footer are one component on every page: the page is a sheet that lifts off a sticky full-viewport blue field ("the curtain"), and the poster underneath is centred: real Paris time, "à bientôt" in the hand, the name cut at the horizon, the address, the links, the light logo in the bar. Chosen by the user from three boards; documented in DESIGN.md. `#contact` is a zero-height anchor before the sticky footer.
 
 ## Memorable moment
 

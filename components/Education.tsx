@@ -40,6 +40,9 @@ export default function Education({ lang }: { lang: Lang }) {
             className="edu-word"
             style={{ "--edu-ch": word.length } as React.CSSProperties}
           >
+            {/* The hand over the top-left of the school's name, inside the
+                heading so it scales with the word through the scroll. */}
+            <span className="edu-sign">{t.sign} </span>
             {word}
           </h2>
 

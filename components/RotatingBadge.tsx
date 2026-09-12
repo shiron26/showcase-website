@@ -23,8 +23,7 @@ export default function RotatingBadge({ text }: { text: string }) {
       </svg>
       {/* The monogram at the centre, still while the ring turns. Two files,
           one per ground; CSS shows the one that matches the theme. */}
-      <img className="badge-mark mark-img mark-img--dark" src="/brand/sb-mark-dark.png" alt="" width={245} height={200} />
-      <img className="badge-mark mark-img mark-img--light" src="/brand/sb-mark-light.png" alt="" width={245} height={200} />
+      <img className="badge-mark mark-img" src="/brand/sb-mark-dark.png" alt="" width={245} height={200} />
     </div>
   );
 }

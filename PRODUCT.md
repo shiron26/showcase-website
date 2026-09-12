@@ -86,4 +86,4 @@ The shared mechanism, which is what binds future work: **display type as the pri
 
 **Constraint the references cannot answer:** all four lean on real imagery. This project has none and no image generation. The creative load therefore sits on typography, colour fields, motion and layout, and the imagery slots stay wired for when real screenshots arrive.
 
-**Theme:** light and dark both fully held with a selector, confirmed 2026-09-07 and still binding.
+**Theme:** light only. On 2026-09-12 the user asked to remove the dark mode and its selector ("Je veux uniquement proposer le mode light"); this replaces the 2026-09-07 commitment to both themes.

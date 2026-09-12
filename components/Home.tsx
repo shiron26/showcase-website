@@ -15,9 +15,18 @@ import {
   DownloadIcon,
   GithubIcon,
   LinkedinIcon,
-  ArrowUpRightIcon,
-  Star,
 } from "@/components/icons";
+
+/** Splits a sentence around its first whole-word occurrence of `word`. If the
+ *  word is not there, the sentence comes back untouched and nothing takes
+ *  the hand. */
+function splitOnWord(sentence: string, word: string) {
+  const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const m = new RegExp(`(^|\\s)${escaped}(?=[\\s,.;:!?]|$)`).exec(sentence);
+  if (!m) return { before: sentence, em: "", after: "" };
+  const start = m.index + m[1].length;
+  return { before: sentence.slice(0, start), em: word, after: sentence.slice(start + word.length) };
+}
 
 export default function Home({ lang }: { lang: Lang }) {
   const t = dict(lang);
@@ -26,7 +35,16 @@ export default function Home({ lang }: { lang: Lang }) {
   const [first, ...rest] = SITE.name.split(" ");
   const last = rest.join(" ");
   const heroCh = Math.max(first.length, last.length, 5);
-  const words = t.statement.before.split(" ");
+  const heroLead = splitOnWord(SITE.positioning[lang], SITE.positioningEm[lang]);
+  // A newline in the sentence is a line break the author chose: the line
+  // with the hand-written word must hold it, and automatic balancing does
+  // not know that.
+  const words = t.statement.before.split(/\s+/);
+  const breakBefore = new Set(
+    t.statement.before.split("\n").slice(0, -1).map((line, i, lines) =>
+      lines.slice(0, i + 1).reduce((n, l) => n + l.trim().split(/\s+/).length, 0),
+    ),
+  );
   const counts = [
     { n: SITE.counts.roles ?? ROLES.length, label: t.counts.roles, href: "#path" },
     {
@@ -79,10 +97,15 @@ export default function Home({ lang }: { lang: Lang }) {
                 {SITE.location[lang] ? ` — ${SITE.location[lang]}` : ""}
               </p>
               <p
-                className="hero-lead hero-in"
+                className="hero-lead d-2 hero-in"
                 style={{ marginTop: "0.75rem", "--i": 1 } as React.CSSProperties}
               >
-                {SITE.positioning[lang]}
+                {/* Display type with one hand-written word, like the close. The
+                    sentence stays one string for the metadata; it is split
+                    here on the word that takes the hand. */}
+                {heroLead.before}
+                {heroLead.em ? <span className="em">{heroLead.em}</span> : null}
+                {heroLead.after}
               </p>
               <div className="hero-actions hero-in" style={{ "--i": 2 } as React.CSSProperties}>
                 <a className="btn btn--fill" href={`mailto:${SITE.email}`}>
@@ -125,6 +148,13 @@ export default function Home({ lang }: { lang: Lang }) {
       <Reveal className="band statement-band">
         <div className="inner statement-grid">
           <figure className="portrait">
+            {/* A greeting in the hand, hung over the top-left corner of the
+                photograph the way a signature crosses the corner of a print.
+                The outer span fades in with the band; the inner one carries
+                the tilt, because the entrance animates the outer transform. */}
+            <span className="portrait-sign st-in" style={{ "--i": 3 } as React.CSSProperties} aria-hidden="true">
+              <span>{t.portrait.sign}</span>
+            </span>
             <img
               src="/portrait/shiron.webp"
               srcSet="/portrait/shiron-640.webp 640w, /portrait/shiron.webp 1000w"
@@ -150,7 +180,7 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="d-1 statement-line">
               {words.map((w, i) => (
                 <span key={i}>
-                  {i > 0 ? " " : null}
+                  {i > 0 ? (breakBefore.has(i) ? <br /> : " ") : null}
                   <span className="st-w" style={{ "--i": i } as React.CSSProperties}>
                     <span>{w}</span>
                   </span>
@@ -215,8 +245,12 @@ export default function Home({ lang }: { lang: Lang }) {
       <section className="band band--pad" id="skills">
         <div className="inner">
           <div className="head">
-            <h2 className="d-2">{t.skills.title}</h2>
-            <p className="head-note">{t.skills.lead}</p>
+            {/* The lead in the hand over the title, the reference's "Our"
+                over SERVICES, instead of the note beside it. */}
+            <h2 className="d-2 head-signed">
+              <span className="head-sign">{t.skills.lead} </span>
+              {t.skills.title}
+            </h2>
           </div>
           {/* Two columns of capabilities: the capability, one sentence on how it
               shows in the work, then the tools in small type. */}
@@ -249,50 +283,6 @@ export default function Home({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      <section className="band band--drench band--pad" id="contact">
-        <div className="inner">
-          <h2 className="d-1" style={{ maxWidth: "14ch" }}>
-            {t.contact.title} <span className="em">{t.contact.titleEm}</span>
-          </h2>
-          <p className="lead" style={{ marginTop: "1.25rem", opacity: 0.85 }}>
-            {t.contact.lead}
-          </p>
-          <a className="close-mail" href={`mailto:${SITE.email}`} style={{ marginTop: "2.5rem" }}>
-            {SITE.email}
-            <ArrowUpRightIcon />
-          </a>
-          <ul className="close-links">
-            {SITE.cv[lang] ? (
-              <li>
-                <a className="close-link" href={SITE.cv[lang]} download>
-                  <DownloadIcon />
-                  {t.hero.actions.cv}
-                </a>
-              </li>
-            ) : null}
-            {SITE.github ? (
-              <li>
-                <a className="close-link" href={SITE.github} target="_blank" rel="me noreferrer">
-                  <GithubIcon />
-                  {t.hero.actions.github}
-                </a>
-              </li>
-            ) : null}
-            {SITE.linkedin ? (
-              <li>
-                <a className="close-link" href={SITE.linkedin} target="_blank" rel="me noreferrer">
-                  <LinkedinIcon />
-                  {t.hero.actions.linkedin}
-                </a>
-              </li>
-            ) : null}
-          </ul>
-          <p className="d-hero close-name" aria-hidden="true">
-            {SITE.name}
-          </p>
-          <Star aria-hidden style={{ width: 28, height: 28, marginTop: "1rem" }} />
-        </div>
-      </section>
     </>
   );
 }

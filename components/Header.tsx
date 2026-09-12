@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { dict, type Lang } from "@/lib/i18n";
-import ThemeToggle from "@/components/ThemeToggle";
 import LangSwitch from "@/components/LangSwitch";
 import { SITE } from "@/content/site";
 
@@ -94,12 +93,10 @@ export default function Header({
     <header className="header" ref={ref}>
       {notice}
       <div className="header-bar">
-        {/* The monogram, in the pill the wordmark used to sit in. Two files, one
-            per ground: the dark mark on the light theme, the light mark on the
-            dark one; CSS shows the right one, so the swap needs no script. */}
+        {/* The monogram, in the pill the wordmark used to sit in: the dark mark
+            on the light ground. The site is light only (2026-09-12). */}
         <Link href={`/${lang}`} className="mark" aria-label={SITE.name}>
-          <img className="mark-img mark-img--dark" src="/brand/sb-mark-dark.png" alt="" width={245} height={200} />
-          <img className="mark-img mark-img--light" src="/brand/sb-mark-light.png" alt="" width={245} height={200} />
+          <img className="mark-img" src="/brand/sb-mark-dark.png" alt="" width={245} height={200} />
         </Link>
         <nav className="header-nav" aria-label={t.nav.sections}>
           {links.map((l) => (
@@ -108,7 +105,6 @@ export default function Header({
         </nav>
         <div className="header-controls" style={{ marginInlineStart: "auto" }}>
           <LangSwitch lang={lang} />
-          <ThemeToggle lang={lang} />
         </div>
         <button
           type="button"
@@ -129,8 +125,7 @@ export default function Header({
       {open ? (
         <div className="menu" id="menu" role="dialog" aria-modal="true" aria-label={t.nav.sections}>
           <div className="menu-top">
-            <img className="menu-mark mark-img mark-img--light" src="/brand/sb-mark-light.png" alt="" width={245} height={200} />
-            <img className="menu-mark mark-img mark-img--dark" src="/brand/sb-mark-dark.png" alt="" width={245} height={200} />
+            <img className="menu-mark mark-img" src="/brand/sb-mark-light.png" alt="" width={245} height={200} />
             <button type="button" className="menu-close" ref={closeBtn} onClick={hide} aria-label={t.nav.close}>
               <span aria-hidden="true">×</span>
             </button>

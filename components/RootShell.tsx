@@ -11,23 +11,24 @@ import "@/app/globals.css";
 
 const CONTRACT = `<!--
 THESIS: a portfolio where display type IS the content at the scale it has in life, and colour arrives as full-bleed fields that own whole sections. It refuses the developer-portfolio default this project shipped first and the user rejected: a neutral page with a hairline index and an accent.
-OWN-WORLD: kraft and brown-black ink inverted between themes, one deep tobacco field that drenches whole bands, one pale sky that only ever means live (palette "Tabac", 2026-09-10; before it: bone/ink, ultramarine, acid green). Two voices in a headline — a wide grotesque plus a single didone italic word. No cards, no shadows, no containers.
+OWN-WORLD: one light ground only (dark mode removed 2026-09-12), one deep tobacco field that drenches whole bands, one pale sky that only ever means live (palette "Tabac", 2026-09-10; before it: bone/ink, ultramarine, acid green). Two voices in a headline — a wide grotesque plus a single didone italic word. No cards, no shadows, no containers.
 STORY: a recruiter is met by the name at full width, reads one statement, scans the catalogue as bands that drench under the cursor, and leaves by email, CV, GitHub or a project page.
 FIRST VIEWPORT: SHIRON BESKIWIN set edge to edge in uppercase display, a turning badge at its right, the positioning line and four actions beneath, the marquee band breaking the fold.
 FORM: pinned brief (gusta.studio, dineshrevunuru.com, huuuuue.agency, ryanritzenthaler.com) — a pinned brief beats the roll; direction seed aa4446f1 superseded.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance.
 -->`;
 
-/* Runs before first paint: settles the theme, and decides whether the entrance
-   plays at all — so the overlay is either there from the first frame or never,
-   and it never drops onto an already-painted page. It plays on every arrival,
-   refresh included; only reduced motion skips it. */
-const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var s=localStorage.getItem("theme");var m=window.matchMedia("(prefers-color-scheme: dark)").matches;var t=s==="light"||s==="dark"?s:(m?"dark":"light");d.setAttribute("data-theme",t);d.dataset.themeChoice=s||"system";}catch(e){}try{var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduce){d.dataset.enter="1";d.style.setProperty("--enter-delay","1630ms");}}catch(e){}})();`;
+/* Runs before first paint: decides whether the entrance plays at all — so the
+   overlay is either there from the first frame or never, and it never drops
+   onto an already-painted page. It plays on every arrival, refresh included;
+   only reduced motion skips it. (The site is light only since 2026-09-12; the
+   theme choice this script used to settle is gone with the toggle.) */
+const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduce){d.dataset.enter="1";d.style.setProperty("--enter-delay","1630ms");}}catch(e){}})();`;
 
 export default function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const t = dict(lang);
   return (
-    <html lang={lang} data-theme="light" suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
         <link rel="preload" href="/fonts/bricolage.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />

@@ -52,6 +52,13 @@ typography:
     lineHeight: 1
     letterSpacing: "-0.06em"
     note: "Retired 2026-09-11: the entrance counter is now the monogram filling up; the number is a tag-label."
+  sign:
+    fontFamily: "Qwitcher Grypen, 'Brush Script MT', 'Segoe Script', cursive"
+    fontSize: "clamp(2.25rem, 1rem + 5vw, 5rem)"
+    fontWeight: 700
+    lineHeight: 0.9
+    letterSpacing: "0"
+    note: "The hand in the close, written by a mask on scroll. --d-sign."
   marquee:
     fontFamily: "Bricolage, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(1.75rem, 5.4vw, 4.5rem)"
@@ -95,11 +102,12 @@ typography:
     letterSpacing: "0.24em"
     note: "SVG user units inside the badge's 100x100 viewBox, not a page size — it scales with the badge. The ring's character capacity is computed from it in RotatingBadge.tsx."
   emphasis:
-    fontFamily: "Bodoni Moda, Georgia, 'Times New Roman', serif"
-    fontSize: "inherit"
-    fontWeight: 500
-    lineHeight: "inherit"
-    letterSpacing: "-0.01em"
+    fontFamily: "Qwitcher Grypen, 'Brush Script MT', 'Segoe Script', cursive"
+    fontSize: "2.4em"
+    fontWeight: 700
+    lineHeight: 0
+    letterSpacing: "0"
+    note: "Replaced Bodoni Moda italic 500 on 2026-09-12. Upright, coloured --em."
   lead:
     fontFamily: "Hanken, ui-sans-serif, system-ui, -apple-system, sans-serif"
     fontSize: "clamp(1.0625rem, 0.95rem + 0.5vw, 1.375rem)"
@@ -281,9 +289,9 @@ Four materials only: two grounds that trade places between themes, one electric 
 
 **Display Font:** Bricolage Grotesque (variable, `wdth` 75–100, weight 200–800) with `ui-sans-serif, system-ui, sans-serif`
 **Body Font:** Hanken Grotesk (variable, weight 300–800) with `ui-sans-serif, system-ui, -apple-system, sans-serif`
-**Emphasis Font:** Bodoni Moda italic (400–700) with `Georgia, "Times New Roman", serif`
+**Emphasis Font:** Qwitcher Grypen 700 (a rough pen script) with `"Brush Script MT", "Segoe Script", cursive`
 
-All three are self-hosted woff2 in `public/fonts/`, subset to Latin, `font-display: swap`. Bricolage and Hanken are preloaded in `<head>`; Bodoni is not, because it is a handful of glyphs below the fold.
+All three are self-hosted woff2 in `public/fonts/`, subset to Latin, `font-display: swap`. Bricolage and Hanken are preloaded in `<head>`; the script is not, because it is a handful of glyphs below the fold. All three are published under the SIL Open Font License 1.1 (verified 2026-09-12): no fee, no attribution on the page.
 
 **Character:** A wide, tightly-tracked grotesque set at poster scale, cut once per headline by a single didone italic word. The grotesque is the voice; the didone is the breath. Body copy is a quiet neutral that gets out of the way — it exists so the display type has something to be large *against*.
 
@@ -293,7 +301,7 @@ All three are self-hosted woff2 in `public/fonts/`, subset to Latin, `font-displ
 - **Display 2** (700, clamp 1.75rem→3.5rem, line-height 0.94, tracking −0.035em): section headings (Work, Path, Skills).
 - **Display 3** (700, clamp 1.375rem→2rem, line-height 1.02, tracking −0.028em): skills-group titles, project pagination targets, empty-state headline.
 - **Emphasis** (Bodoni Moda italic 500, tracking −0.01em, 0.06em trailing pad): exactly one word inside a Display 1 headline.
-- **Lead** (clamp 1.0625rem→1.375rem, line-height 1.45, max 34ch): the sentence directly under a display headline. `.hero-lead` runs to 38ch, `.proj-lead` to 44ch.
+- **Lead** (clamp 1.0625rem→1.375rem, line-height 1.45, max 34ch): the sentence directly under a display headline. `.proj-lead` runs to 44ch. `.hero-lead` is no longer a lead (2026-09-12): the positioning line is set as Display 2 in capitals across a few lines, max 24ch, line-height 0.84 (chosen on the specimen board the same day), with one word in the hand (`SITE.positioningEm`, split out of the sentence in `Home.tsx` so the metadata keeps one string), on the model of the reference's contact headline.
 - **Body** (1.0625rem, line-height 1.55, max `--measure` 62ch): running prose in project blocks and timeline summaries.
 - **Small** (0.9375rem, weight 600): buttons, filters, nav labels, row summaries, footer.
 - **Label** (0.75rem, weight 600, tracking 0.14em, uppercase, faint): every metadata line — role/location under the name, block headings on project pages, section kickers in the entrance panel, dates.
@@ -594,3 +602,34 @@ This lifts the Nothing-Disappears Rule for navigation on narrow screens, by the 
 ## The cursor (added 2026-09-11)
 
 One disc of pure white (`#fff`, the one colour outside the palette: difference against white is the exact negative, against bone it would be tinted), 14px, `mix-blend-mode: difference`, so whatever it crosses is printed in negative under it: bone on ink, ink on bone, the field turned inside out. It trails the pointer on an exponential ease (time constant 80ms, `components/Cursor.tsx`) and swells to 40px over anything clickable (56px was tried first and read as too much), 10px while the button is down. The native cursor is hidden only once the component has mounted on a fine pointer; a touch screen, reduced motion, or a script that never ran keep the browser's own cursor, and the loop runs only while the disc is still catching up, then stops. The blend and the transform sit on the same element, because a transformed parent would isolate the disc from the page and it would invert nothing.
+
+
+## The hand-written word (2026-09-12)
+
+The one italic word per headline is now a hand-written one. Shiron pinned lxlcreative.co.uk for the way a script crosses its titles ("Our" over SERVICES, "great" inside a sentence). That site sets Owners Wide, Manrope and Scribo Rough Pro; the first and last are paid faces (MCKL Type, Underware), so the script is **Qwitcher Grypen 700** (Robert Leuschke, OFL), the closest free rough pen script found among fourteen candidates painted side by side. Everything else stays: Bricolage still displays, Hanken still reads, the palette is untouched. The user was explicit that only the calligraphic voice changes.
+
+`.em` sets the script at 2.4em of the headline, so that its small x-height lands at the height of the capitals (1.5em and 1.7em were tried and read as a footnote beside the caps), with line-height 0 so the tall glyphs never open the line they sit in, upright (a −4° tilt was tried and removed at the user's request: the reference does not lean), and kept in the line with a normal space before it. Because it is taller than the line, it overflows the lines above and below when the headline wraps, and that vertical overlap is the whole effect (the reference's "great" inside a four-line headline). A horizontal overlap onto the previous word was built and rejected the same day: the reference never does it on a single line. It takes no pointer events. Its colour is `--em`: the link colour on the page, `--live` inside the statement band, the drenched close and the ink band, and the field where the ink band inverts to bone in dark — the field blue as text on a dark ground is the one pair the Background-Only Rule forbids. The statement's clip box (`.st-w:has(.em)`) is widened, because a script has ascenders and descenders a capital does not. In the experience chapters the **role** (`.xp-role`: Développeur fullstack, Software Engineer, Data Scientist) is in the hand too, at 1.75× Display 3, tucked up into the foot of the company name; and the current chapter's "aujourd'hui" under the year in the field takes the same hand, pulled up into the digits.
+
+The One Italic Word Rule holds unchanged, with "hand-written" for "italic".
+
+**The signature on the portrait (same day).** A greeting (`t.portrait.sign`: "C'est moi" / "That's me", tilted −9° on an inner span, its foot a third of an em into the frame), in the hand and the band's script colour, hangs over the top-left corner of the photograph (`.portrait-sign`): its first letters outside the frame, the rest across the top edge, the way lxlcreative hangs "Studios" over its portrait. Positioned with `top`/`left` offsets rather than a transform, because the reveal animates the transform. Decorative and `aria-hidden`: the name is already the page's heading.
+
+**"Diplômé de" over the school (same day).** The education panel's word takes a lead-in in the hand (`t.education.sign`: "Diplômé de" / "Graduate of", `.edu-sign`), hung over the top-left of the name and tilted −5° (−9° was too much for the user), on the model of "Our" over SERVICES. It lives inside the `<h2>` and is sized in em of the word, so the scroll scales the two together; `--em` on the panel follows the Inversion Rule (live on ink in light, the field on bone in dark).
+
+**The skills head (same day).** "Ce que je sais faire." / "What I can do." is no longer the note beside the title: it is set in the hand at the title's own size, hung over the top-left of "Compétences", upright (`.head-signed`, `.head-sign`), the reference's "Our" over SERVICES. The other section heads keep their notes.
+
+## The close: a curtain over a poster (2026-09-12)
+
+The contact section and the footer are one thing now, `components/Footer.tsx`, on every page. Shiron asked for a more beautiful end that builds itself on scroll; three boards were painted (four mechanisms, then the curtain and the letter pushed plus two more, then five arrangements under the curtain) and he chose **the curtain** with **the poster** arrangement.
+
+**The mechanism.** `<main>` is a sheet: it carries its own ground (`--bg`) and `z-index: 1`; the footer under it is `position: sticky; bottom: 0; z-index: 0`, a full-viewport drench field. Reaching the end of the page lifts the sheet off the poster. JavaScript publishes one number, `--p` (0 covered → 1 uncovered, from the sheet's bottom edge in the viewport), on the footer and as `--lift` on `<html>`; every motion is a CSS function of it, and reduced motion forces `--p: 1`. As the sheet lifts, its bottom corners round to 2.5rem and it casts a soft offset shadow: **the one offset shadow in the system**, and the one radius besides the education panel's, both on the sheet, never on a component.
+
+**The poster, centred, the site's only centred composition.** Top row: city and the real Paris time (`Intl.DateTimeFormat`, Europe/Paris, refreshed every 15 s) and the availability line (`t.contact.available`), under the reserved header height. Centre: "à bientôt" / "see you soon" (`t.contact.sign`) written in the hand by a mask; the name at hero scale (capped at 19svh, 13svh below 720px) cut at the horizon, the top half solid and the bottom half a `--live` outline (a 3px stroke under a fill in the field's own colour, `paint-order: stroke fill`, so the face's overlapping contours never show inside a glyph; tracking loosened to −0.005em so neighbouring outlines never cross), the two halves arriving from opposite sides and meeting on the line; the address at `--d-mail` and the links, rising last. Bottom bar: the light logo (`sb-logo-light.png`, the field is blue in both themes), the copyright, the language link.
+
+**The anchor.** `#contact` is a zero-height span before the sticky footer, at its natural position: scrolling to the footer itself goes nowhere, because a sticky element is always in view.
+
+Removed: `.band--drench` contact close in Home.tsx, the ghosted name watermark, the star sign-off, the old `.footer` row.
+
+## Light only (2026-09-12)
+
+The user removed the dark mode: "Je veux uniquement proposer le mode light sur mon portfolio." The theme toggle (`ThemeToggle.tsx`), the boot script's theme choice, the `data-theme` attribute and every `:root[data-theme="dark"]` rule are gone; the light palette in `:root` is the only one. The Inversion Rule and the dark counterparts named above (`.band--ink` inverting, the education panel and the experience fields turning bone, the lavender link) are history, kept in this document as the record of what was built. The mark exists in two files still, but only the dark mark is rendered on the light grounds (header pill, badge) and only the light mark on the ink grounds (menu, entrance panel, the close's logo on the field).

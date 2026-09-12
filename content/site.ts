@@ -22,6 +22,12 @@ export const SITE = {
     fr: "Je construis des produits de bout en bout, en travaillant avec le métier plutôt qu'à côté.",
     en: "I build products end to end, working with the business rather than beside it.",
   } satisfies Record<Lang, string>,
+  /** The one word of the positioning line set in the hand. It must appear in
+      the sentence above as a whole word; Home.tsx splits on it. */
+  positioningEm: {
+    fr: "avec",
+    en: "with",
+  } satisfies Record<Lang, string>,
 
   /** The address on the CV. */
   email: "shiron2603@gmail.com",
