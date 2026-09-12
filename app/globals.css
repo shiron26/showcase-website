@@ -1386,12 +1386,15 @@ main {
   overflow: hidden;
   display: grid;
   --em: var(--live);
-  /* The finished state: every curve below evaluates to 1 with no script. */
+  /* The finished state: every curve below evaluates to 1 with no script.
+     The sheet lifts from the bottom, so the windows run bottom-up too: each
+     element moves while it is being uncovered, and the hand writes last. */
   --p: 1;
-  --t-meta: clamp(0, calc((var(--p) - 0.1) / 0.3), 1);
-  --t-sign: clamp(0, calc((var(--p) - 0.15) / 0.35), 1);
-  --t-name: clamp(0, calc((var(--p) - 0.25) / 0.45), 1);
-  --t-rise: clamp(0, calc((var(--p) - 0.75) / 0.25), 1);
+  --t-bar: clamp(0, calc((var(--p) - 0.05) / 0.25), 1);
+  --t-rise: clamp(0, calc((var(--p) - 0.3) / 0.25), 1);
+  --t-name: clamp(0, calc((var(--p) - 0.42) / 0.36), 1);
+  --t-sign: clamp(0, calc((var(--p) - 0.74) / 0.22), 1);
+  --t-meta: clamp(0, calc((var(--p) - 0.88) / 0.1), 1);
 }
 .close-inner {
   min-height: 100dvh;
@@ -1427,8 +1430,8 @@ main {
   font-variant-ligatures: no-common-ligatures;
   padding: 0.3em 0.2em 0.2em;
   margin: -0.3em -0.2em -0.2em;
-  -webkit-mask: linear-gradient(90deg, #000 calc(var(--t-sign) * 100%), transparent calc(var(--t-sign) * 100% + 6%));
-  mask: linear-gradient(90deg, #000 calc(var(--t-sign) * 100%), transparent calc(var(--t-sign) * 100% + 6%));
+  -webkit-mask: linear-gradient(90deg, #000 calc(var(--t-sign) * 106% - 6%), transparent calc(var(--t-sign) * 106%));
+  mask: linear-gradient(90deg, #000 calc(var(--t-sign) * 106% - 6%), transparent calc(var(--t-sign) * 106%));
 }
 /* The name at hero scale, cut at the horizon: the top half solid, the bottom
    half an outline, arriving from opposite sides and meeting on the line. */
@@ -1436,7 +1439,7 @@ main {
   position: relative;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: min(var(--d-hero), 19svh);
+  font-size: min(var(--d-hero), 26svh);
   line-height: 0.82;
   /* Looser than the hero: the outline half draws every contour, and at the
      hero's tracking adjacent letters overlap and their strokes cross. */
@@ -1507,6 +1510,8 @@ main {
   border-bottom-color: var(--live);
 }
 .close-bar {
+  opacity: var(--t-bar);
+  transform: translateY(calc((1 - var(--t-bar)) * 1rem));
   padding-top: var(--s-5);
   border-top: 1px solid color-mix(in srgb, var(--on-drench) 30%, transparent);
   /* Three cells, the outer two of equal width, so the copyright sits on the
@@ -1537,6 +1542,9 @@ main {
 @media (max-width: 720px) {
   .close-name {
     font-size: min(var(--d-hero), 13svh);
+  }
+  .close-meta {
+    justify-content: center;
   }
   .close-bar {
     grid-template-columns: 1fr;

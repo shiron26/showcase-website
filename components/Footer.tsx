@@ -142,7 +142,7 @@ export default function Footer({ lang }: { lang: Lang }) {
           </ul>
         </div>
 
-        <div className="close-bar close-rise">
+        <div className="close-bar">
           {/* The field is blue in both themes, so only the light logo is
               ever right here. */}
           <img
