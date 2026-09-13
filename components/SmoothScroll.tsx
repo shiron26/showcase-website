@@ -70,6 +70,9 @@ export default function SmoothScroll() {
     };
 
     const onWheel = (e: WheelEvent) => {
+      // While the route curtain is closed there is nothing to scroll: the page
+      // behind it is being replaced and its position is not the reader's yet.
+      if (doc.dataset.route) return;
       if (reduce.matches || !fine.matches || e.ctrlKey) return;
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
       if (nativeScroller(e.target)) return;

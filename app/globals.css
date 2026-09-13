@@ -122,6 +122,14 @@
   --s-8: 4.5rem;
   --s-9: clamp(4rem, 2rem + 7vw, 9rem);
 
+  /* The one radius between 0 and the pill, and the one shadow outside the
+     lifting sheet. Both belong to screenshots only (2026-09-13, at the user's
+     request): a light screenshot on a light ground has no edge of its own.
+     Structure stays square and flat. */
+  --r-shot: 0.5rem;
+  --shadow-shot: 0 1px 2px color-mix(in oklab, var(--ink) 5%, transparent),
+    0 10px 26px color-mix(in oklab, var(--ink) 7%, transparent);
+
   --gutter: clamp(1.25rem, 0.5rem + 3.2vw, 3.5rem);
   /* published by Header once mounted; the fallback covers first paint */
   --header-h: 5.5rem;
@@ -297,6 +305,8 @@ body {
 .em,
 .portrait-sign,
 .edu-sign,
+.proj-now,
+.proj-sign,
 .xp-role,
 .xp-field[data-current] .xp-years span:last-child {
   font-variant-ligatures: no-common-ligatures;
@@ -351,6 +361,17 @@ body {
 }
 .band--pad {
   padding-block: var(--s-9);
+}
+/* A section that is also an anchor has to frame its own title, not its top
+   padding. `scroll-padding-top` on <html> already reserves the header; without
+   this the band's own --s-9 lands on top of that and the heading sits a
+   quarter of a screen down, with nothing above it. The negative margin swallows
+   exactly the padding the band carries, so the title arrives where any heading
+   would. */
+#path,
+#work,
+#skills {
+  scroll-margin-top: calc(-1 * var(--s-9));
 }
 .band--sunk {
   background: var(--bg-2);
@@ -670,6 +691,44 @@ body {
   }
   .menu-btn {
     display: inline-flex;
+  }
+}
+
+/* ── The route curtain ──────────────────────────────────────────────────────
+   The third use of the ink veil, after the mobile menu and the image viewer.
+   Opening a project used to collapse the document under a standing scroll
+   position: the sticky footer field flashed across the screen and the reset
+   animated back to the top. The veil closes over all of that and opens on a
+   page already in place. It wipes down and then keeps going down, rather than
+   retreating the way it came. */
+.curtain {
+  position: fixed;
+  inset: 0;
+  /* above the skip link (200), under the entrance panel (300) */
+  z-index: 250;
+  background: var(--ink);
+  pointer-events: none;
+}
+.curtain[data-phase="in"] {
+  animation: curtain-in 420ms var(--ease-io) both;
+}
+.curtain[data-phase="out"] {
+  animation: curtain-out 420ms var(--ease-io) both;
+}
+@keyframes curtain-in {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes curtain-out {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(100% 0 0 0);
   }
 }
 
@@ -1610,8 +1669,30 @@ main {
   margin-bottom: var(--s-4);
 }
 .proj-title {
+  position: relative;
   text-transform: uppercase;
   margin-bottom: var(--s-5);
+  /* room for the hand hung above the caps */
+  margin-top: 0.34em;
+}
+/* Client or Personnel, written over the top-left corner of the name. Same
+   construction as .edu-sign: inside the heading, sized in em of the word so
+   the two scale together, tilted the same five degrees. */
+.proj-sign {
+  position: absolute;
+  top: -0.4em;
+  left: -0.02em;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 0.46em;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--em, var(--link));
+  transform: rotate(-5deg);
+  transform-origin: left bottom;
+  white-space: nowrap;
+  pointer-events: none;
 }
 .proj-lead {
   font-size: var(--t-lead);
@@ -1619,51 +1700,313 @@ main {
   max-width: 44ch;
   color: var(--fg-2);
 }
-.proj-media {
-  margin-block: var(--s-8);
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--bg-2);
-}
-.proj-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* A page to read, not a band to fill. The story keeps a page's width; the
+   contact sheet takes the room left on the right, where there was nothing. */
+.proj > .inner {
+  max-width: 1280px;
 }
 .proj-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 15rem;
-  gap: var(--s-9);
-  align-items: start;
   margin-top: var(--s-8);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 21rem);
+  gap: var(--s-8);
+  align-items: start;
 }
-@media (max-width: 900px) {
+.proj-shots {
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-5));
+}
+/* Two frames to a row in the side column, whatever its width.
+   The scroll guard lives on the grid, not on the block: the block carries the
+   hairline that has to line up with the story's, and a scroll box on it would
+   move that line. And the guard is padded, then pulled back by the same
+   amount, because `overflow-y: auto` also clips horizontally — without the
+   padding the right-hand frames lose the shadow on their outer edge. */
+.proj-shots .sheet-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-3);
+  max-height: calc(100dvh - var(--header-h) - var(--s-9));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.5rem 1.5rem 1.5rem;
+  margin: -0.5rem -1.5rem -1.5rem;
+}
+/* No side to ride: the sheet falls back under the story, at full width, with
+   the frames at the size they take anywhere else. */
+@media (max-width: 1120px) {
   .proj-grid {
     grid-template-columns: 1fr;
-    gap: var(--s-7);
+    gap: var(--s-8);
+  }
+  .proj-shots {
+    position: static;
+  }
+  .proj-shots .sheet-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr));
+    gap: var(--s-4);
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
   }
 }
+/* The story. Each section is announced by its own title in display type over
+   a hairline: the label used to sit in an 8rem margin, too small and too faint
+   to anchor anything, and the four blocks read as one grey wall. The space
+   above a title is far larger than the space under it, so the title belongs to
+   what follows. */
 .blocks {
   display: grid;
-  gap: var(--s-7);
+  gap: var(--s-8);
+  align-content: start;
 }
 .block {
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--rule);
+}
+.block-h {
+  margin-bottom: var(--s-5);
+}
+.block-body {
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: var(--s-5);
+  max-width: 62ch;
+}
+.block-body p {
+  color: var(--fg-2);
+  font-size: clamp(1.0625rem, 1rem + 0.22vw, 1.1875rem);
+  line-height: 1.62;
+  text-wrap: pretty;
+}
+/* An ordered argument inside a section: the lead-in becomes the point's title,
+   set in the display face at reading size so it carries against the prose. */
+.point {
+  display: grid;
+  gap: 0.35rem;
+}
+.point-h {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  color: var(--fg);
+}
+
+/* The facts, on one strip, for a reader with four minutes and six tabs open. */
+.facts {
+  margin-top: var(--s-7);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: var(--s-5);
 }
-@media (max-width: 720px) {
-  .block {
-    grid-template-columns: 1fr;
-    gap: var(--s-3);
-  }
+.fact dd {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  font-size: var(--t-sm);
+  font-weight: 600;
 }
-.aside-group {
-  display: grid;
+/* The one word in the hand on a project page, and it is not an ornament: the
+   experience chapters already write the current role's "aujourd'hui" this way,
+   and the project pages were the only place the same word stayed in the
+   grotesque. Line-height 0 so the tall glyphs never open the row, and a small
+   lift because the script's foot sits below the baseline of the digits. */
+.proj-now {
+  font-family: var(--font-script);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.9em;
+  line-height: 0;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--em, var(--link));
+  display: inline-block;
+  transform: translateY(-0.04em);
+  margin-inline-start: 0.06em;
+}
+
+/* Every link the project can offer. No link, no row. */
+.proj-links {
+  margin-top: var(--s-6);
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--s-3);
 }
-.aside-group + .aside-group {
-  margin-top: var(--s-6);
+
+/* ── The contact sheet ──────────────────────────────────────────────────────
+   Frames at a size you can take in at once, each cropped to its own top-left
+   corner, which is how you recognise a screen. No border, no radius, no
+   shadow: the only chrome is the grid itself. */
+.sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr));
+  gap: var(--s-4);
+}
+.thumb {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-shot);
+  background: var(--bg-2);
+  box-shadow: var(--shadow-shot);
+  cursor: pointer;
+  overflow: hidden;
+}
+.thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--r-shot);
+  object-fit: cover;
+  object-position: left top;
+  transition: opacity 320ms var(--ease), filter 320ms var(--ease);
+}
+/* A portrait shot sits whole in the frame rather than being cropped to a
+   sliver of its own top: the phone shape is half of what it shows. */
+.thumb[data-tall] img {
+  object-fit: contain;
+  object-position: center;
+}
+/* The sheet answers the pointer by holding the frame under it and letting the
+   others fall back. Nothing lifts, nothing grows: the page has no shadows to
+   lift into. */
+.sheet-grid:hover .thumb img,
+.sheet-grid:focus-within .thumb img {
+  opacity: 0.38;
+}
+.thumb:hover img,
+.thumb:focus-visible img {
+  opacity: 1;
+}
+
+/* ── The viewer ─────────────────────────────────────────────────────────────
+   The ink veil, the same inversion as the mobile menu and .band--ink, with the
+   image whole against it. Three rows: the counter and the close, the image,
+   then one button on each side of the caption. */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 160;
+  background: var(--ink);
+  color: var(--bone);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--s-4);
+  padding: var(--s-4) var(--gutter) max(var(--s-5), env(safe-area-inset-bottom));
+  animation: viewer-in 260ms var(--ease) both;
+  touch-action: pan-y;
+}
+:root[data-viewer="open"] {
+  overflow: hidden;
+}
+@keyframes viewer-in {
+  from {
+    opacity: 0;
+  }
+}
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+}
+.viewer-bar .tag-label {
+  color: inherit;
+  opacity: 0.65;
+}
+.viewer-x {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  line-height: 1;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 220ms var(--ease), color 220ms var(--ease);
+}
+.viewer-x:hover {
+  background: var(--bone);
+  color: var(--ink);
+}
+/* The stage is the box; the image is fitted into it. Sizing the image from
+   its own ratio instead lets a percentage max-height slip against the grid
+   area, and the foot walks off the bottom of the screen. */
+.viewer-stage {
+  position: relative;
+  min-height: 0;
+}
+.viewer-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--r-shot);
+  object-fit: contain;
+  animation: shot-in 380ms var(--ease) both;
+}
+@keyframes shot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+.viewer-foot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-4);
+}
+.viewer-nav {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 220ms var(--ease), color 220ms var(--ease);
+}
+.viewer-nav:hover {
+  background: var(--bone);
+  color: var(--ink);
+}
+/* A caption is a sentence, not a label: the tracked uppercase used elsewhere
+   for metadata is unreadable past three words. */
+.viewer-cap {
+  text-align: center;
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: color-mix(in oklab, currentColor 78%, transparent);
+  text-wrap: pretty;
+}
+@media (max-width: 600px) {
+  .viewer-foot {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+  .viewer-cap {
+    order: -1;
+    grid-column: 1 / -1;
+    text-align: start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .viewer,
+  .viewer-stage img,
+  .thumb img {
+    animation: none;
+    transition: none;
+  }
 }
 .proj-nav {
   display: grid;
@@ -2628,3 +2971,4 @@ main {
     animation: none;
   }
 }
+

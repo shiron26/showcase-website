@@ -21,7 +21,16 @@
  * evaluated at a smaller input.
  */
 
-import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, type CSSProperties, type ReactNode } from "react";
+
+/**
+ * Arm before the browser paints, not after. The section is 100svh at rest and
+ * 320svh once armed, so arming in a plain effect let the page paint 2.2
+ * viewports short and then grow — which threw off the scroll position the
+ * browser had just restored on a Back. useLayoutEffect runs after the commit
+ * and before paint, so the page is never briefly the wrong height.
+ */
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export default function Scrub({
   id,
@@ -36,7 +45,7 @@ export default function Scrub({
 }) {
   const ref = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const el = ref.current;
     if (!el) return;
 

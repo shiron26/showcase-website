@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { dict, type Lang } from "@/lib/i18n";
 import LangSwitch from "@/components/LangSwitch";
@@ -30,6 +31,10 @@ export default function Header({
   const menuBtn = useRef<HTMLButtonElement | null>(null);
   const closeBtn = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
+  // The menu holds :root[data-menu="open"] { overflow: hidden }. A navigation
+  // started from inside it must close it, or the next page cannot scroll.
+  const pathname = usePathname();
+  useEffect(() => setOpen(false), [pathname]);
   const [current, setCurrent] = useState<Section | null>(null);
 
   useEffect(() => {

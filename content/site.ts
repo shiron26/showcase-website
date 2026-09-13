@@ -68,8 +68,8 @@ export const SITE = {
    */
   counts: {
     roles: null as number | null,
-    freelance: 3 as number | null,
-    perso: 5 as number | null,
+    client: 5 as number | null,
+    perso: 3 as number | null,
   },
 };
 

@@ -5,29 +5,28 @@ import { dict, type Lang } from "@/lib/i18n";
 import { SORTED_PROJECTS, type ProjectKind } from "@/content/projects";
 import ProjectEntry from "@/components/ProjectEntry";
 
-type Filter = "all" | ProjectKind;
+/* No "all": the two registers are the argument. A catalogue of five entries
+   read as one undifferentiated list said nothing, and the third pill was a
+   default nobody chose. Client opens, because it is the evidence a recruiter
+   came for. */
+type Filter = ProjectKind;
 
 export default function WorkIndex({ lang }: { lang: Lang }) {
   const t = dict(lang).work;
-  const [filter, setFilter] = useState<Filter>("all");
+  const [filter, setFilter] = useState<Filter>("client");
 
   const counts = useMemo(
     () => ({
-      all: SORTED_PROJECTS.length,
-      freelance: SORTED_PROJECTS.filter((p) => p.kind === "freelance").length,
+      client: SORTED_PROJECTS.filter((p) => p.kind === "client").length,
       perso: SORTED_PROJECTS.filter((p) => p.kind === "perso").length,
     }),
     [],
   );
 
-  const shown = useMemo(
-    () => (filter === "all" ? SORTED_PROJECTS : SORTED_PROJECTS.filter((p) => p.kind === filter)),
-    [filter],
-  );
+  const shown = useMemo(() => SORTED_PROJECTS.filter((p) => p.kind === filter), [filter]);
 
   const filters: { value: Filter; label: string; count: number }[] = [
-    { value: "all", label: t.all, count: counts.all },
-    { value: "freelance", label: t.freelance, count: counts.freelance },
+    { value: "client", label: t.client, count: counts.client },
     { value: "perso", label: t.perso, count: counts.perso },
   ];
 

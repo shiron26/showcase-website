@@ -242,7 +242,7 @@ components:
 
 This is a poster you can scroll. The name is set edge to edge at the scale it would have on a wall, and the page is built from full-width horizontal bands that each take a whole colour — never a neutral page with accents sprinkled over it. There are no cards, no shadows, no floating containers and no boxed layouts. Depth is made from grounds against each other and from hairline rules, nothing else. Where the reference sites use photography to carry the visual weight, this system uses colour arriving at page scale and type set larger than seems reasonable.
 
-The build ships **no imagery at all** and there is no image generation available for it. That is the governing constraint, not a temporary gap: the creative load rests entirely on typography, colour fields, motion and layout. Two slots (`.row-thumb` in the work index, `.proj-media` on the project page) are wired to `project.cover` and stay inert until real screenshots arrive; adding one must not change the world around it.
+The build ships **no imagery at all** and there is no image generation available for it. That is the governing constraint, not a temporary gap: the creative load rests entirely on typography, colour fields, motion and layout. Real screenshots arrived for MyAdvisor on 2026-09-13 and live in the contact sheet at the foot of a project page; the lead image above the story was removed the same day, at the user's request. Adding an image must not change the world around it.
 
 This design **replaces** a first build that executed the developer-portfolio category standard and was rejected outright by the user ("On y est pas du tout", "beaucoup trop générique"). The rejected system — a neutral page, a hairline index, one small accent colour — is the confirmed anti-reference. Four sites were pinned in its place (gusta.studio, dineshrevunuru.com, huuuuue.agency, ryanritzenthaler.com), and their shared mechanism binds future work: display type as the primary content at absurd scale, two typefaces inside one headline, full-bleed colour fields, a marquee band, a rotating badge, and media treated as an object rather than a card.
 
@@ -344,13 +344,15 @@ Breakpoints in use: 640, 720, 860, 900, 1000px. There is no named breakpoint sys
 
 ## Elevation & Depth
 
-**There are no shadows in this system. Zero.** Nothing is lifted, nothing floats, nothing has a drop shadow, an inner shadow, or a glow. Depth is made three ways and only three ways:
+**There are no shadows in this system, with two named exceptions.** Nothing is lifted, nothing floats, nothing has an inner shadow or a glow. Depth is made three ways and only three ways:
 
 1. **Ground against ground** — `--bg` vs `--bg-2` (`.band--sunk`), and the two full inversions `.band--ink` and `.band--drench`.
 2. **Hairlines** — 1px `--rule` between index rows, timeline entries and above the footer; 1px `--edge` around interactive pills.
 3. **Stacking order alone** — the fixed header (z-index 100), the notice bar inside it (110), the skip link (200), the entrance panel (300). No shadow marks these layers; they are simply in front.
 
-The single exception to "no box-shadow" is the focus ring, where `box-shadow: 0 0 0 6px` draws a *halo of the current background* around the outline so the ring stays visible when it lands on a drenched or ink field. That is a legibility device, not elevation.
+Two things carry a real shadow, and both were decided rather than reached for. The first is the lifting sheet at the close, described in its own section. The second is **a screenshot on the contact sheet** (`--shadow-shot`, added 2026-09-13 at the user's request): the MyAdvisor captures are near-white pages on a bone ground and had no edge of their own, so they were bleeding into the page. The shadow is a real one, offset and softly blurred at 5% and 7% of the ink, never a zero-offset halo, and it stops at the sheet — inside the viewer the image sits on ink and needs nothing.
+
+The other use of `box-shadow` is the focus ring, where `box-shadow: 0 0 0 6px` draws a *halo of the current background* around the outline so the ring stays visible when it lands on a drenched or ink field. That is a legibility device, not elevation.
 
 **The chromatic fringe is not a glow.** The hero fluid separates the heading's alpha into three channels while the field is in motion, which reads as a red/cyan edge on the smear. It is adjudicated here rather than left ambiguous: it is a *transport artifact of the simulation*, it is exactly zero at rest, it is never attached to an element as decoration, and it cannot be applied to anything that is not moving. That is what distinguishes it from a glow, which the zero-shadow rule still forbids everywhere.
 
@@ -371,7 +373,9 @@ The recurring silhouette is the **four-point star** (`Star` in `icons.tsx`): fil
 
 ### Named Rules
 
-**The Two Radii Rule.** 999px or 0. There is no 4px, no 8px, no 12px. If a new element needs a corner, decide whether it is an interactive control (pill) or a structural surface (square) — there is no third answer.
+**The Two Radii Rule.** 999px or 0 — with one named exception. There is no 4px, no 12px, no radius picked by feel. If a new element needs a corner, decide whether it is an interactive control (pill) or a structural surface (square).
+
+*The exception (2026-09-13, at the user's request):* **a screenshot** takes `--r-shot`, 0.5rem, on the contact sheet's frames and on the image in the viewer. It applies to photographic content only, never to a container, a control or a band, and there is exactly one value: a second "slightly rounded" number anywhere in the system is a defect.
 
 **The One Icon System Rule.** Icons are drawn in a 16px box, 1.6 stroke, round caps and joins, `currentColor`, from the shared `base` spread in `components/icons.tsx`. No icon font, no icon package, no glyph characters, no mixed stroke weights. A new icon is added to that file with the same base.
 
@@ -485,7 +489,7 @@ The one photograph is a still specimen; the one piece of live matter on the site
 - **Don't** add a fourth typeface, and don't give an existing one a second job.
 - **Don't** hardcode a hero font-size or drop the inline `--hero-ch`; the name must be able to shrink instead of clipping.
 - **Don't** hide navigation or content at narrow widths — rearrange it.
-- **Don't** treat imagery as a thumbnail in a frame. `.row-thumb` and `.proj-media` are wired for real screenshots; an image arrives as an object in the flow, filling its slot with `object-fit: cover` and no border, radius or shadow.
+- **Don't** treat imagery as a thumbnail in a frame. An image arrives as an object in the flow, with no border, radius or shadow: the contact sheet's frames carry nothing but the picture, and the viewer sets the image whole on the ink.
 - **Don't** re-introduce the rejected category standard: a neutral page with a hairline index and a single small accent colour is the confirmed anti-reference for this project.
 
 
@@ -562,7 +566,7 @@ An odometer that rolled the years from one chapter's field into the next's was b
 
 ## Three registers: the story and the catalogue (added 2026-09-11)
 
-Shiron's work comes in three kinds: roles in companies, freelance missions, personal projects. From a board of five structures the user chose **the story and the catalogue**: employment stays as chapters (the Experience section, `content/cv.ts`), and the index becomes the catalogue of everything delivered outside employment (`content/projects.ts`, `kind: "freelance" | "perso"`, filters Freelance / Personnel, one page per entry). The section is named "Réalisations" / "Work" and the nav follows the page order: Parcours, Réalisations, Compétences, Contact.
+Shiron's work comes in three kinds: roles in companies, client work, personal projects. From a board of five structures the user chose **the story and the catalogue**: employment stays as chapters (the Experience section, `content/cv.ts`), and the index becomes the catalogue of everything delivered outside employment (`content/projects.ts`, `kind: "client" | "perso"`, filters Client / Personnel, one page per entry). **There is no "All" filter** (removed 2026-09-13 at the user's request): the two registers are the argument the section makes, a catalogue of five read as one undifferentiated list said nothing, and the third pill was a default nobody chose. Client opens, because it is the evidence a recruiter came for. The section is named "Réalisations" / "Work" and the nav follows the page order: Parcours, Réalisations, Compétences, Contact.
 
 Under the statement, three counters name the registers and link to their sections (`.st-counts`): a number at Display 2 over a label, ruled above, one per register. They are computed from the content, never typed. The catalogue ships with two sample entries marked `sample: true` until the real missions and projects arrive.
 
@@ -633,3 +637,169 @@ Removed: `.band--drench` contact close in Home.tsx, the ghosted name watermark, 
 ## Light only (2026-09-12)
 
 The user removed the dark mode: "Je veux uniquement proposer le mode light sur mon portfolio." The theme toggle (`ThemeToggle.tsx`), the boot script's theme choice, the `data-theme` attribute and every `:root[data-theme="dark"]` rule are gone; the light palette in `:root` is the only one. The Inversion Rule and the dark counterparts named above (`.band--ink` inverting, the education panel and the experience fields turning bone, the lavender link) are history, kept in this document as the record of what was built. The mark exists in two files still, but only the dark mark is rendered on the light grounds (header pill, badge) and only the light mark on the ink grounds (menu, entrance panel, the close's logo on the field).
+
+
+## The project page: "la fiche" (recomposed 2026-09-13)
+
+The first composition put each section's label in an 8rem left margin at label
+size, faint, next to prose capped at 62ch. Shiron rejected it as hard to read:
+the four labels were too small and too far left to anchor anything, the four
+blocks carried identical weight, and the whole page read as one grey wall in a
+column stranded inside a 1400px band.
+
+From a board of four (a single thread with display headings; a band per section
+with the result on the drench field; the facts sheet; a sticky rail carrying the
+section index) he chose **la fiche**:
+
+- **The facts first**, on one ruled strip under the lead: year, client, stack,
+  for a reader with four minutes and six tabs open. The year carries the live
+  dot when the project is open-ended, the same signal as the index row.
+- **The links next**, as outline buttons: `live` and `source` carry translated
+  labels, and `links.more` takes anything else (a case study, a store listing)
+  with its own label per language. No link, no row.
+- **The story then**, one ruled block per section, its title in Display 3 above
+  its own prose rather than orphaned in a margin. The space above a title is
+  `--s-8`, the space under it `--s-5`, so the title belongs to what follows.
+- **Ordered arguments are broken out.** A paragraph that opens with a short
+  sentence ("La vitesse d'abord. …") is split by `splitPoint` in
+  `ProjectPage.tsx`: the lead-in becomes the point's title in the display face
+  at reading size, the rest stays prose. Two such paragraphs in a section make
+  it an argument; one is a coincidence and stays prose. This is what turned the
+  Approche block from three identical paragraphs into three named points.
+- **The page is held at 1080px**, narrower than the 1400px `.inner` everywhere
+  else. A page to read is not a band to fill.
+
+There is **no lead image** on a project page: the user removed it on 2026-09-13
+("je n'en veux pas"), and the screenshots belong to the sheet, where each one is
+captioned and can be opened.
+
+**The gallery** (`project.gallery`, `Shot[]`) is a **contact sheet**, chosen on
+2026-09-13 after the first version — one image per row at the page's width —
+was rejected for taking five screens and burying the pagination. The sheet is a
+grid of `13.5rem` frames (`.sheet-grid`, `auto-fill`), each cropped 16/10 to its
+own top-left corner, which is the part of a screen you recognise it by — except
+a portrait shot, which is fitted whole into the frame instead (`data-tall`,
+written from the `Shot`'s own `w`/`h`), because cropping a phone screenshot to a
+landscape sliver loses the one thing that says it is a phone. It
+carries no border, no radius and no shadow: the grid is the only chrome.
+Hovering or focusing one frame holds it at full strength and drops the others to
+38%, so the sheet answers the pointer without anything lifting — the page has no
+shadows to lift into.
+
+**Where the sheet sits (2026-09-13).** The story is a measured column and the
+page had nothing on its right, so the sheet moved there: `.proj-grid` is
+`minmax(0, 1fr) minmax(0, 21rem)` inside a 1280px inner, and `.proj-shots` is
+`position: sticky` under the header, two frames to a row, riding the story down
+and stopping at its end. Below 1120px there is no side to ride: the grid becomes
+one column, the sheet goes back to its own ruled block under the story at full
+width, and its frames return to the size they take anywhere else. The frames
+load eagerly at low priority — in the side column they are on screen from the
+first paint, so a lazy frame would sit grey in plain sight.
+
+Opening a frame drops **the viewer** (`components/Gallery.tsx`): a fixed ink
+veil, the same inversion as the mobile menu and `.band--ink`, in three rows —
+the counter and a round close, the image fitted whole into the middle row, then
+one round button on each side of the caption. Arrow keys, a horizontal swipe, a
+tap on the ink beside the image and Escape all do the work of the buttons; the
+page behind is locked with `:root[data-viewer="open"]`, focus moves to the close
+button and returns to the frame that opened it. The veil is portalled to
+`<body>`, because a transformed ancestor would turn its `position: fixed` into a
+box inside the page. Reduced motion drops the veil's fade and the image's
+cross-fade.
+
+Images are objects in the flow, never thumbnails in frames, and never a
+placeholder plate for a project that has nothing to show yet: a project with no
+`gallery` renders no block at all. A caption is set below the image in the body
+face at small size — a caption is a sentence, and the tracked uppercase used for
+metadata elsewhere is unreadable past three words. Files live in `public/work/`,
+which carries a README naming the fields; screenshots ship as WebP at 2000px
+(the seven MyAdvisor shots weigh 548 KB in total against 5.2 MB as PNG).
+
+
+## The route curtain (added 2026-09-13)
+
+Opening a project from deep in the index used to be ugly, and for a reason
+worth recording. The shell never unmounts: a navigation swaps the contents of
+`<main>` under a scroll position that belongs to the page being left. The
+document collapsed from about fifteen viewports to three while the position
+stood still, the browser clamped it to the new bottom — which is exactly where
+the sticky footer field lives — and the drench flashed across the screen. Next's
+scroll reset then *animated* back to the top, because `<html>` lacked
+`data-scroll-behavior="smooth"` and the site's own `scroll-behavior: smooth` was
+left in force during the transition.
+
+**The third use of the ink veil**, after the mobile menu and the image viewer.
+`components/RouteCurtain.tsx` intercepts clicks that change the pathname, wipes
+the veil down over the page, navigates, puts the new page where it should start
+*behind the veil*, and wipes it further down to reveal it. The wipe continues in
+one direction rather than retreating the way it came. Same ink, same
+`--ease-io`, same `clip-path` grammar as `menu-in`, 420 ms each way, `z-index`
+250 — above the skip link, under the entrance panel.
+
+It stays out of the way of everything it should: a modified click, a new tab, a
+download, another origin, and above all a link whose pathname is the current one
+— the section anchors in the header keep the smooth in-page scroll that
+`scroll-padding-top` was built for. `data-no-curtain` on a link opts it out.
+
+**And the memory of where you were.** `history.scrollRestoration` is taken over
+by the same component, because the native restoration ran against a page that
+then grew: `Scrub` armed the Education panel from `100svh` to `320svh` after
+paint, 2.2 viewports that pushed Experience and Work down, so Back landed two
+sections early. Two fixes, both kept: `Scrub` now arms in a layout effect, before
+the browser paints, and the restored position is **re-asserted until the layout
+stops moving** — every frame for 700 ms, on every document resize, and once more
+when the display face lands — instead of once and hopefully.
+
+Back plays no curtain. On `popstate` the navigation has already happened, so a
+veil would wipe in over content already swapped and show exactly what it is
+there to hide.
+
+Without JavaScript no click is intercepted and the browser keeps its own
+restoration; the global reduced-motion switch collapses the wipe to nothing, and
+the sequence is driven by timers rather than animation events so it cannot stall
+when that happens. A route that does not land within 2.5 s opens the veil anyway:
+a curtain that waits forever is worse than the flash it hides.
+
+**A section that is an anchor frames its title, not its padding (2026-09-13).**
+Arriving at `#work` used to leave a quarter of a screen empty above
+"Réalisations": `scroll-padding-top` on `<html>` reserves the header, and the
+band's own `--s-9` top padding then landed on top of that. The three anchored
+bands (`#path`, `#work`, `#skills`) carry `scroll-margin-top: calc(-1 *
+var(--s-9))`, which swallows exactly the padding they carry, so the heading
+arrives where any heading would — under the header, with the 1.5rem the
+scroll-padding already gives it. It holds for every route to that anchor: the
+header nav, the counters under the statement, and the "all projects" link on a
+project page.
+
+**The hand on a project page (2026-09-14).** The page carried no script at all,
+and the user asked for one. It was not a matter of finding somewhere to put it:
+the experience chapters already write the current role's **"aujourd'hui"** in the
+hand, pulled up into the digits of the year, and the project pages were the only
+place in the site where that same word stayed in the grotesque. So the facts
+strip's year takes it (`.proj-now`, 1.9em of the fact, `line-height: 0` so the
+tall glyphs never open the row, lifted 0.04em to put the script's foot on the
+baseline of the digits, `--em` for colour like every other use, ligatures off
+like every other use).
+
+It is one word per page, and it appears only on a project that is still running
+— Clarity, MyAdvisor, BeezB have it; Lyodge and Angie, whose periods are closed,
+do not. That absence is the point: the hand marks the live edge of a period, the
+same thing the live dot beside it marks, and a finished project has no live edge.
+It is deliberately **not** added to the index rows, which show the same string:
+three script words in one list would spend in a paragraph what the system spends
+in a page.
+
+**The register over the name (2026-09-14).** The same hand writes **Client** or
+**Personnel** over the top-left corner of a project's title (`.proj-sign`),
+built exactly like `.edu-sign`: inside the `<h1>`, sized in em of the word so
+the two scale together, tilted the same five degrees, `--em` for colour. It is
+the third use of the hung lead-in, after "C'est moi" over the portrait and
+"Diplômé de" over the school, and it is the only place a personal project states
+its register on its own page — the facts strip drops the client cell there,
+because "Client — Personnel" says nothing twice.
+
+It is not `aria-hidden`, unlike the portrait's greeting: the heading reading
+"Personnel Clarity" is true, and the register is information rather than
+decoration. A project page therefore carries two script words, the register and
+the live edge of its period; they sit a screen apart in size and in job, one hung
+over a display word and one inline in a small fact.

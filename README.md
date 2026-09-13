@@ -29,13 +29,13 @@ Replace every value marked `TODO`:
 | `cv` | Paths to your CV PDFs (see below). Empty means no download button — a button that 404s is a defect, not a placeholder |
 | `url` | The domain you deploy to — used for canonical URLs and Open Graph |
 
-### 2. `content/projects.ts` — your freelance missions and personal projects
+### 2. `content/projects.ts` — your client work and personal projects
 
 **Every project in there right now is invented.** Names, dates, employers, numbers and outcomes are fiction and must be replaced before this site goes near a recruiter.
 
 Keep the shape, change the words. One entry per project:
 
-- `kind: "freelance" | "perso"` drives the filter. Employment is not here: it is told in chapters from `content/cv.ts`. Both kinds are shown at the same quality — that is deliberate.
+- `kind: "client" | "perso"` drives the filter. Employment is not here: it is told in chapters from `content/cv.ts`. Both kinds are shown at the same quality — that is deliberate.
 - `order` is the sort key, highest first. It can be a decimal (`2023.5`) to slot a project between two years.
 - `summary` is the line read in the index. Say the **outcome**, not the category.
 - `context` / `role` / `approach` / `outcome` are arrays of paragraphs. This order is the argument: the problem, what you owned, what you decided, what changed.
@@ -54,7 +54,7 @@ Once the sample content is gone, set `SHOW_PLACEHOLDER_BANNER = false` at the bo
 
 ## Adding real assets
 
-**Project screenshots** — drop a file at `public/work/<slug>.png` (1600×1000 works well) and set `cover: "/work/<slug>.png"` on that project. A thumbnail appears in the index row and a full-width image at the top of the project page. Without a cover, the entry is purely typographic — which is honest, and fast.
+**Project screenshots** — drop files in `public/work/` and list them in that project's `gallery` (see `public/work/README.md`). They appear as a contact sheet at the end of the project page and open full screen when clicked. Without images, the entry is purely typographic — which is honest, and fast.
 
 **Your CV** — put the PDFs at `public/cv/shiron-beskiwin-cv.pdf` and `public/cv/shiron-beskiwin-cv-en.pdf`, then set the two `cv` paths in `content/site.ts`. Until you do, the download button simply does not render.
 

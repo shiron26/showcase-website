@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import PlaceholderBanner from "@/components/PlaceholderBanner";
 import SmoothScroll from "@/components/SmoothScroll";
+import RouteCurtain from "@/components/RouteCurtain";
 import Cursor from "@/components/Cursor";
 import "@/app/globals.css";
 
@@ -28,7 +29,7 @@ const BOOT_SCRIPT = `(function(){var d=document.documentElement;try{var reduce=w
 export default function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
   const t = dict(lang);
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={lang} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: BOOT_SCRIPT }} />
         <link rel="preload" href="/fonts/bricolage.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
@@ -41,6 +42,7 @@ export default function RootShell({ lang, children }: { lang: Lang; children: Re
         <div hidden dangerouslySetInnerHTML={{ __html: CONTRACT }} />
         <Preloader lang={lang} />
         <SmoothScroll />
+        <RouteCurtain />
         <Cursor />
         <a className="skip" href="#main">
           {t.skip}

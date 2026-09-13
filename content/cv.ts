@@ -74,7 +74,7 @@ export const ROLES: Role[] = [
         "Refonte des commissions mandataires, optimisation SQL, migrations de données, parcours utilisateurs simplifiés.",
         "DevOps : infrastructure AWS et chaîne de déploiement, environnements, intégration et livraison continues, tests.",
         "Artibox : abonnements multi-plan, gamification, bannières d'incitation, campagnes mailing et push par segments.",
-        "Tests end-to-end Playwright ; workflows IA dans les produits et dans l'équipe ; run sur 13 projets.",
+        "Workflows IA dans les produits et dans l'équipe ; run sur 13 projets.",
       ],
       en: [
         "Full rebuild of Devibox, interface and back office: concept, design, API rewrite and development.",
@@ -82,7 +82,7 @@ export const ROLES: Role[] = [
         "Rebuilt agent commissions, SQL optimisation, data migrations, simpler user journeys.",
         "DevOps: AWS infrastructure and delivery pipeline, environments, continuous integration and delivery, tests.",
         "Artibox: multi-plan subscriptions, gamification, incentive banners, e-mail and push campaigns on segments.",
-        "Playwright end-to-end tests; AI workflows in the products and the team; run across 13 projects.",
+        "AI workflows in the products and the team; run across 13 projects.",
       ],
     },
     stack: ["PHP", "Symfony", "Flutter", "Next.js", "React", "JavaScript", "AWS", "Docker", "GitLab CI", "DocuSign", "Stripe", "LLM", "Cursor", "MariaDB"],
@@ -246,8 +246,8 @@ export const SKILLS: SkillGroup[] = [
       en: "A product in production is maintained every day: triaging a ticket fast and well, fixing a bug without creating another, tracking security vulnerabilities and updating dependencies before they become a risk, and deciding between what must be fixed now and what can wait.",
     },
     items: {
-      fr: ["AWS", "Docker", "Linux", "GitLab CI", "Supabase", "Cloudflare", "Tests Playwright", "Run et incidents"],
-      en: ["AWS", "Docker", "Linux", "GitLab CI", "Supabase", "Cloudflare", "Playwright tests", "Run and incidents"],
+      fr: ["AWS", "Docker", "Linux", "GitLab CI", "Supabase", "Cloudflare", "Run et incidents"],
+      en: ["AWS", "Docker", "Linux", "GitLab CI", "Supabase", "Cloudflare", "Run and incidents"],
     },
   },
   {

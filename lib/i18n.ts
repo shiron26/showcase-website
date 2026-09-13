@@ -31,14 +31,12 @@ type Dict = {
     now: string;
     nowRole: string;
     nowAt: string;
-    latest: string;
     actions: { email: string; cv: string; github: string; linkedin: string };
   };
   work: {
     title: string;
     lead: string;
-    all: string;
-    freelance: string;
+    client: string;
     perso: string;
     countOne: string;
     countMany: string;
@@ -49,8 +47,8 @@ type Dict = {
     open: string;
   };
   path: { title: string; lead: string; present: string; internship: string; missions: string; readMore: string; readLess: string; countOne: string; countMany: string };
-  /** The three counters under the statement: roles, freelance missions, personal projects. */
-  counts: { roles: [string, string]; freelance: [string, string]; perso: [string, string] };
+  /** The three counters under the statement: roles, client projects, personal projects. */
+  counts: { roles: [string, string]; client: [string, string]; perso: [string, string] };
   /** The scrubbed education panel: kicker, lead, and the four labels around the word. */
   education: { title: string; lead: string; sign: string; city: string; years: string; degree: string; school: string };
   skills: { title: string; lead: string };
@@ -62,6 +60,13 @@ type Dict = {
     approach: string;
     outcome: string;
     stack: string;
+    client: string;
+    gallery: string;
+    enlarge: string;
+    imagePrev: string;
+    imageNext: string;
+    imageClose: string;
+    imageCount: string;
     links: string;
     live: string;
     source: string;
@@ -80,7 +85,7 @@ export const DICT: Record<Lang, Dict> = {
   fr: {
     site: { name: "Shiron Beskiwin", role: "Software Engineer" },
     badge: "Software Engineer",
-    marquee: ["Fullstack", "Back-end", "Automatisation", "IA", "Livré"],
+    marquee: ["Fullstack", "Back-end", "Automatisation", "Data", "IA", "Produit", "UI/UX", "Sécurité", "DevOps"],
     statement: {
       before: "Je livre des\nproduits",
       em: "entiers",
@@ -102,19 +107,17 @@ export const DICT: Record<Lang, Dict> = {
       now: "En ce moment",
       nowRole: "développeur fullstack",
       nowAt: "chez",
-      latest: "Dernier projet",
       actions: { email: "M'écrire", cv: "Télécharger le CV", github: "GitHub", linkedin: "LinkedIn" },
     },
     work: {
       title: "Réalisations",
-      lead: "Missions freelance et projets personnels, avec le contexte, mon rôle et le résultat pour chacun.",
-      all: "Tout",
-      freelance: "Freelance",
+      lead: "Travaux menés pour des clients et projets personnels, avec le contexte, mon rôle et le résultat pour chacun.",
+      client: "Client",
       perso: "Personnel",
       countOne: "réalisation",
       countMany: "réalisations",
       empty: "Aucune réalisation dans ce filtre.",
-      emptyHint: "Reviens à « Tout » pour voir le catalogue complet.",
+      emptyHint: "Choisis l'autre registre pour voir le reste du catalogue.",
       year: "Année",
       role: "Rôle",
       open: "Ouvrir le projet",
@@ -132,7 +135,7 @@ export const DICT: Record<Lang, Dict> = {
     },
     counts: {
       roles: ["poste en entreprise", "postes en entreprise"],
-      freelance: ["mission freelance", "missions freelance"],
+      client: ["projet client", "projets clients"],
       perso: ["projet personnel", "projets personnels"],
     },
     education: {
@@ -164,6 +167,13 @@ export const DICT: Record<Lang, Dict> = {
       approach: "Approche",
       outcome: "Résultat",
       stack: "Stack",
+      client: "Client",
+      gallery: "Images",
+      enlarge: "Agrandir",
+      imagePrev: "Image précédente",
+      imageNext: "Image suivante",
+      imageClose: "Fermer",
+      imageCount: "Images du projet",
       links: "Liens",
       live: "Voir en ligne",
       source: "Code source",
@@ -186,7 +196,7 @@ export const DICT: Record<Lang, Dict> = {
   en: {
     site: { name: "Shiron Beskiwin", role: "Software Engineer" },
     badge: "Software Engineer",
-    marquee: ["Fullstack", "Back-end", "Automation", "AI", "Shipped"],
+    marquee: ["Fullstack", "Back-end", "Automation", "Data", "AI", "Product", "UI/UX", "Security", "DevOps"],
     statement: {
       before: "I ship products,\nstart to",
       em: "finish",
@@ -208,19 +218,17 @@ export const DICT: Record<Lang, Dict> = {
       now: "Currently",
       nowRole: "fullstack developer",
       nowAt: "at",
-      latest: "Latest project",
       actions: { email: "Email me", cv: "Download CV", github: "GitHub", linkedin: "LinkedIn" },
     },
     work: {
       title: "Work",
-      lead: "Freelance missions and personal projects, each with its context, my role and the outcome.",
-      all: "All",
-      freelance: "Freelance",
+      lead: "Work done for clients and personal projects, each with its context, my role and the outcome.",
+      client: "Client",
       perso: "Personal",
       countOne: "piece of work",
       countMany: "pieces of work",
       empty: "Nothing in this filter.",
-      emptyHint: "Go back to “All” to see the full catalogue.",
+      emptyHint: "Pick the other register to see the rest of the catalogue.",
       year: "Year",
       role: "Role",
       open: "Open project",
@@ -238,7 +246,7 @@ export const DICT: Record<Lang, Dict> = {
     },
     counts: {
       roles: ["role in a company", "roles in companies"],
-      freelance: ["freelance mission", "freelance missions"],
+      client: ["client project", "client projects"],
       perso: ["personal project", "personal projects"],
     },
     education: {
@@ -270,6 +278,13 @@ export const DICT: Record<Lang, Dict> = {
       approach: "Approach",
       outcome: "Outcome",
       stack: "Stack",
+      client: "Client",
+      gallery: "Images",
+      enlarge: "Enlarge",
+      imagePrev: "Previous image",
+      imageNext: "Next image",
+      imageClose: "Close",
+      imageCount: "Project images",
       links: "Links",
       live: "View live",
       source: "Source code",

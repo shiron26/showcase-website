@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { dict, projectHref, type Lang } from "@/lib/i18n";
+import { dict, type Lang } from "@/lib/i18n";
 import { SITE } from "@/content/site";
 import { ROLES, SKILLS } from "@/content/cv";
-import { SORTED_PROJECTS, PROJECTS } from "@/content/projects";
+import { PROJECTS } from "@/content/projects";
 import WorkIndex from "@/components/WorkIndex";
 import Marquee from "@/components/Marquee";
 import RotatingBadge from "@/components/RotatingBadge";
@@ -31,7 +30,6 @@ function splitOnWord(sentence: string, word: string) {
 export default function Home({ lang }: { lang: Lang }) {
   const t = dict(lang);
   const current = ROLES.find((r) => r.current);
-  const latest = SORTED_PROJECTS[0];
   const [first, ...rest] = SITE.name.split(" ");
   const last = rest.join(" ");
   const heroCh = Math.max(first.length, last.length, 5);
@@ -48,8 +46,8 @@ export default function Home({ lang }: { lang: Lang }) {
   const counts = [
     { n: SITE.counts.roles ?? ROLES.length, label: t.counts.roles, href: "#path" },
     {
-      n: SITE.counts.freelance ?? PROJECTS.filter((p) => p.kind === "freelance").length,
-      label: t.counts.freelance,
+      n: SITE.counts.client ?? PROJECTS.filter((p) => p.kind === "client").length,
+      label: t.counts.client,
       href: "#work",
     },
     {
@@ -231,14 +229,6 @@ export default function Home({ lang }: { lang: Lang }) {
             <p className="head-note">{t.work.lead}</p>
           </div>
           <WorkIndex lang={lang} />
-          {latest ? (
-            <p className="tag-label" style={{ marginTop: "1.5rem" }}>
-              {t.hero.latest} —{" "}
-              <Link href={projectHref(lang, latest.slug)} style={{ color: "var(--link)" }}>
-                {latest.title}
-              </Link>
-            </p>
-          ) : null}
         </div>
       </section>
 
